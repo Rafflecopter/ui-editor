@@ -6,9 +6,10 @@
 // Window
 
 @include B(window) {
+  flex-grow: 1;
   width: 100%;
   height: calc(33% - (3/2 * #{$base-pad}));
-  border: 1px solid #cdcdcd;
+  border: 1px solid $grey-light;
   -webkit-box-shadow: inset rgba(0,0,0,.05) 0 3px 10px;
   box-shadow: inset rgba(0,0,0,.05) 0 3px 10px;
   border-radius: 3px;
@@ -19,7 +20,14 @@
   -moz-appearance: none;
   -webkit-appearance: none;
   position: relative;
-  flex-grow: 1;
+
+  &:hover {
+    border-color: rgba($grey-mid, 0.5);
+  }
+
+  &:focus {
+    border-color: $grey-mid;
+  }
 
   &:not(:last-child) {
     margin-bottom: $base-pad;
@@ -58,14 +66,14 @@
   height: 25px;
   top: 2px;
   right: 2px;
-  padding: 0 16px 0 6px;
-  border: solid 1px $grey-light;
-  background: #fff;
-  text-align: center;
-  font-size: .75em;
-  color: #777;
-  border-radius: 3px;
   z-index: 30;
+  padding: 0 16px 0 6px;
+  color: $grey-mid;
+  background: white;
+  border: solid 1px $grey-light;
+  text-align: center;
+  font-size: in-rems(12px);
+  border-radius: 3px;
   opacity: 0.8;
 
   &:after {
@@ -89,20 +97,21 @@
 
   &.console-toggle {
     top: initial;
-    bottom: 102px;
+    bottom: 2px;
 
     &:after {
-      top: 10px;
-      border-bottom-color: transparent;
-      border-top-color: $black;
+      top: 6px;
+      border-bottom-color: $black;
+      border-top-color: transparent;
     }
 
     &.btn-active {
-      bottom: 2px;
+      bottom: $console-height + 2px;
+
       &:after {
-        top: 6px;
-        border-bottom-color: $black;
-        border-top-color: transparent;
+        top: 10px;
+        border-bottom-color: transparent;
+        border-top-color: $black;
       }
     }
   }

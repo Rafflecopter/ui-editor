@@ -19,14 +19,26 @@ pre {
 @include B(page) {
   height: 100vh;
   padding: 0 $base-pad $base-pad;
+  overflow: hidden;
   box-sizing: border-box;
+
   @include E(header) {
+    @include flex(row, space-between, center);
     height: $header-height;
     background: $grey-ghost;
   }
   @include E(body) {
     @include flex(row);
     height: $body-height;
+  }
+}
+
+@include B(page-logo) {
+  width: 120px;
+
+  svg {
+    width: 120px;
+    fill: $black;
   }
 }
 
