@@ -1,0 +1,23 @@
+//------------------------------------------------------------------------------
+// Abstract
+
+
+//------------------------------------------------------------------------------
+// Preview
+
+@include B(preview) {
+  position: relative;
+  width: 60%;
+  height: 100%;
+  margin-left: $base-pad;
+  appearance: none;
+  border: 1px solid $grey-light;
+  border-radius: 3px;
+  box-shadow: inset rgba($black, 0.05) 0 3px 10px;
+}
+
+#iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

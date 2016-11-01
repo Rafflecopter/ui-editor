@@ -5,7 +5,7 @@
   // ---
   // For buildOutput() creation. Toggle includes in html output.
   var use = {
-    Autoprefixer: false,
+    Autoprefixer: true,
     Less: false,
     Sass: false,
     Modernizr: false,
@@ -199,35 +199,29 @@
     // Return the number of editor panes displayed
     count: function() {
       var count = 3;
-      var items = $(".windowGroup .column-33");
+      var items = $(".windowGroup .window");
       items.each(function(el) {
         if ($(items[el]).css("display") === "none") count -= 1;
       });
       return count;
     },
     // Resize panes based upon number currently toggled ON
-    resize: function() {
-      var count = this.count();
-      var win = $(".windowGroup .column-33");
-      if (count === 3 || count === 0) {
-        win.css("width", "33%");
-      } else if (count === 2) {
-        win.css("width", "49.5%");
-      } else if (count === 1) {
-        win.css("width", "99%");
-      }
-    },
+    // resize: function() {
+    //   var count = this.count();
+    //   var win = $(".windowGroup .column-33");
+    //   if (count === 3 || count === 0) {
+    //     win.css("width", "33%");
+    //   } else if (count === 2) {
+    //     win.css("width", "49.5%");
+    //   } else if (count === 1) {
+    //     win.css("width", "99%");
+    //   }
+    // },
     // On toggling an editor pane resize remaining and toggle button class
     close: function(el) {
       var name = el.dataset.editor;
-      var count = this.count();
-      if (count > 1 || $(el).hasClass("btn-active")) {
-        $(el).toggleClass("btn-active");
-        $(".window." + name).parent().toggle();
-        this.resize();
-      } else {
-        alert("You Must Have at least one Editor open");
-      }
+      $(el).toggleClass("btn-active");
+      $(".window." + name).toggleClass("window--closed");
     }
   };
 

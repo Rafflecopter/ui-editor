@@ -1,7 +1,17 @@
 //------------------------------------------------------------------------------
-// Color Palette
+// Color Palette (raflui colors)
 
-$black: #344160;
+$blue: #0095FF;
+$green: #41A300;
+$orange: #FF903C;
+
+$grey-dark:   #3F5670;    $black: $grey-dark;
+$grey-mid:    #7F929D;
+$grey-light:  #D5D9E8;
+$grey-ghost:  #FBFCFE;
+
+// less used colors
+$alert: #FF3C3C;
 
 
 
@@ -9,8 +19,7 @@ $black: #344160;
 // Font Config
 
 $font-small: "Helvetica Neue", Helvetica, sans-serif;
-$font-mono:  "Roboto Mono", "Monaco", "Courier New", monospace;
-
+$font-mono: Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace;
 
 $weight-normal: 400;     $weight-regular: $weight-normal;
 $weight-medium: 500;
@@ -31,8 +40,6 @@ $font-size-textbox: in-rems(18px);
 //------------------------------------------------------------------------------
 // Layout
 
-$width--main-column: 760px;
-$width--emojis: 490px;
-$height--page-header: 80px;
-$height--page-footer: 56px;
-$sizing--nav: 60px;
+$header-height: 50px;
+$base-pad: 10px;
+$body-height: calc(100vh - (#{$header-height} + #{$base-pad}));

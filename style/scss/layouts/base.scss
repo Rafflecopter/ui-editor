@@ -2,9 +2,6 @@
 // Abstract
 
 
-
-
-
 //------------------------------------------------------------------------------
 // Base
 
@@ -12,19 +9,31 @@ html, body {
   height: 100%;
 }
 
+pre {
+  width: 100%;
+  height: 100%;
+}
+
 //------------------------------------------------------------------------------
 // Body Components
 @include B(page) {
+  height: 100vh;
+  padding: 0 $base-pad $base-pad;
+  box-sizing: border-box;
+  @include E(header) {
+    height: $header-height;
+    background: $grey-ghost;
+  }
   @include E(body) {
     @include flex(row);
-    height: 100vh;
+    height: $body-height;
   }
 }
 
 @include B(windowGroup) {
   @include flex(column, flex-start, center);
   width: 40%;
-  height: 100vh;
+  height: 100%;
 }
 
 //------------------------------------------------------------------------------

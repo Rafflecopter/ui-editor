@@ -5,6 +5,105 @@
 //------------------------------------------------------------------------------
 // Window
 
-@include B(preview) {
-  top: 0;
+@include B(window) {
+  width: 100%;
+  height: calc(33% - (3/2 * #{$base-pad}));
+  border: 1px solid #cdcdcd;
+  -webkit-box-shadow: inset rgba(0,0,0,.05) 0 3px 10px;
+  box-shadow: inset rgba(0,0,0,.05) 0 3px 10px;
+  border-radius: 3px;
+  -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  flex-grow: 1;
+
+  &:not(:last-child) {
+    margin-bottom: $base-pad;
+  }
+
+  @include M(closed) {
+    height: 50px;
+    flex-basis: 50px;
+    flex-grow: 0;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 4;
+      top: 0;
+      left: 0;
+      background: rgba(white, 0.85);
+      border-radius: 3px;
+    }
+
+    @include BEM(window-toggle) {
+      &:after {
+        top: 8px;
+        border-bottom-color: transparent;
+        border-top-color: $black;
+      }
+    }
+  }
+}
+
+@include B(window-toggle) {
+  display: block;
+  position: absolute;
+  height: 25px;
+  top: 2px;
+  right: 2px;
+  padding: 0 16px 0 6px;
+  border: solid 1px $grey-light;
+  background: #fff;
+  text-align: center;
+  font-size: .75em;
+  color: #777;
+  border-radius: 3px;
+  z-index: 30;
+  opacity: 0.8;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 5px;
+    right: 4px;
+    border: 4px solid transparent;
+    border-bottom-color: $black;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.console-toggle {
+    top: initial;
+    bottom: 102px;
+
+    &:after {
+      top: 10px;
+      border-bottom-color: transparent;
+      border-top-color: $black;
+    }
+
+    &.btn-active {
+      bottom: 2px;
+      &:after {
+        top: 6px;
+        border-bottom-color: $black;
+        border-top-color: transparent;
+      }
+    }
+  }
 }
