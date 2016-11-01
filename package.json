@@ -1,0 +1,22 @@
+{
+  "name": "rafflecopter-editor",
+  "version": "0.0.1",
+  "main": "Gulpfile.js",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-help": "^1.6.1",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-if": "~1.2.5",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-watch": "^4.2.0"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+  }
+}
