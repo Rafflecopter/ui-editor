@@ -18,8 +18,8 @@ $alert: #FF3C3C;
 //------------------------------------------------------------------------------
 // Font Config
 
-$font-small: "Helvetica Neue", Helvetica, sans-serif;
-$font-mono: Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace;
+$font-ui:   "Helvetica Neue", Helvetica, sans-serif;
+$font-mono: "Monaco", "Courier New", monospace;
 
 $weight-normal: 400;     $weight-regular: $weight-normal;
 $weight-medium: 500;

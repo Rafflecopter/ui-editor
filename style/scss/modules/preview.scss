@@ -16,6 +16,11 @@
   border-radius: 3px;
   box-shadow: inset rgba($black, 0.05) 0 3px 10px;
   box-sizing: border-box;
+
+  @include BEM(window-btns) {
+    top: initial;
+    bottom: 2px;
+  }
 }
 
 #iframe {

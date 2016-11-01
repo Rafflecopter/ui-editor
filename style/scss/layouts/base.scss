@@ -14,6 +14,10 @@ pre {
   height: 100%;
 }
 
+@include B(defaults) {
+  display: none;
+}
+
 //------------------------------------------------------------------------------
 // Body Components
 @include B(page) {
@@ -40,6 +44,10 @@ pre {
     width: 120px;
     fill: $black;
   }
+}
+
+@include B(page-actions) {
+  @include flex(row, flex-end, center);
 }
 
 @include B(windowGroup) {

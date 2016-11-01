@@ -1,38 +1,18 @@
 /*global $:false, ace:false, htmlField:false, cssField:false, jsField:false, jqconsole:false*/
 (function cloudEdit() {
   "use strict";
+
+  //------------------------------------------------------------------------------
   // Globals
-  // ---
-  // For buildOutput() creation. Toggle includes in html output.
   var use = {
-    Autoprefixer: true,
-    Less: false,
-    Sass: false,
-    Modernizr: false,
-    Normalize: false,
-    Bootstrap: false,
-    Foundation: false,
     liveEdit: true
   };
 
   // ---
   // End Globals
 
-   // Check if a new appcache is available on page load. If so, ask to load it.
-  window.addEventListener("load", function(e) {
-    window.applicationCache.addEventListener("updateready", function(e) {
-      if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-        // Browser downloaded a new app cache.
-        if (confirm("A new version of this site is available. Load it?")) {
-          window.location.reload();
-        }
-      } else {
-        // Manifest didn't changed. Do NOTHING!
-      }
-    }, false);
-  }, false);
-
-  // Create Text Area panes
+  //------------------------------------------------------------------------------
+  // Editor panes
   // Init ACE Editor and set options;
   (function initAce() {
     var aceTheme;
@@ -79,41 +59,51 @@
       showPrintMargin: false
     });
 
-    // Retrieve values from sessionStorage if set
+    // Set field values from either those stored in sessionStorage
+    // or defaults set in the html
     (function sessionStorageGet() {
+      var default_html = $("#default__html").html(),
+          default_css = $("#default__css").html(),
+          default_js = $("#default__js").html();
+
       if (sessionStorage.getItem("html")) {
         htmlField.setValue(sessionStorage.getItem("html"));
         htmlField.clearSelection();
       } else {
-        htmlField.setValue("<!-- Do not place html/head/body tags here.\n" +
-          "Insert the tags as would normally be used in your\n" +
-          "body element. <script> tags ARE allowed, though\n" +
-          "they're best placed at the end of your HTML -->\n");
+        htmlField.setValue(default_html);
         htmlField.clearSelection();
-        $(".html").one("touchstart click", function() {
-          htmlField.setValue("");
-        });
       }
       if (sessionStorage.getItem("css")) {
         cssField.setValue(sessionStorage.getItem("css"));
+        jsField.clearSelection();
+      } else {
+        cssField.setValue(default_css);
         cssField.clearSelection();
       }
       if (sessionStorage.getItem("js")) {
         jsField.setValue(sessionStorage.getItem("js"));
         jsField.clearSelection();
+      } else {
+        jsField.setValue(default_js);
+        jsField.clearSelection();
       }
+
       if (sessionStorage.getItem("use")) {
         use = JSON.parse(sessionStorage.getItem("use"));
       }
       if (sessionStorage.getItem("cssMode")) {
         cssField.getSession().setMode(sessionStorage.getItem("cssMode"));
       }
+
+      preview(); // render the intial preview
     })();
 
   })();
   // END ACE Editor
 
-  // init jqConsole
+  //------------------------------------------------------------------------------
+  // Init jqconsole
+
   (function initConsole() {
     var header = "Ctrl+C: abort command, Ctrl+A: start of Line, Ctrl+E: end of line.\n";
 
@@ -182,7 +172,9 @@
   })();
   // END jqconsole
 
-  // Toggle Text Areas from Displaying
+  //------------------------------------------------------------------------------
+  // Toggle editor panes
+
   $(".togglePane").on("click", function() {
     panes.close(this);
   });
@@ -201,19 +193,7 @@
       });
       return count;
     },
-    // Resize panes based upon number currently toggled ON
-    // resize: function() {
-    //   var count = this.count();
-    //   var win = $(".windowGroup .column-33");
-    //   if (count === 3 || count === 0) {
-    //     win.css("width", "33%");
-    //   } else if (count === 2) {
-    //     win.css("width", "49.5%");
-    //   } else if (count === 1) {
-    //     win.css("width", "99%");
-    //   }
-    // },
-    // On toggling an editor pane resize remaining and toggle button class
+    // On toggling an editor pane add closed mod and toggle button class
     close: function(el) {
       var name = el.dataset.editor;
       $(el).toggleClass("btn-active");
@@ -221,7 +201,10 @@
     }
   };
 
-  // Used by preview and download to compile editor panes and "Imports" into valid html
+  //------------------------------------------------------------------------------
+  // Concat our preview
+  // Used by preview and copy/download to compile editor panes and "Imports" into valid html
+
   function buildOutput(consoleJS) {
 
     var content = {
@@ -230,86 +213,20 @@
       js: jsField.getValue()
     };
 
-    // If using Autoprefixer, load it first via XMLHTTPRequest but do so only once.
-    if (use.Autoprefixer && typeof autoprefixer === "undefined") {
-      (function loadAutoprefixer() {
-        var xmlHttp = null;
-        xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", "http://rawgit.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js", false);
-        xmlHttp.send(null);
-        var ap = document.createElement("script");
-        ap.type ="text/javascript";
-        ap.text = xmlHttp.responseText;
-        document.getElementsByTagName("head")[0].appendChild(ap);
-      })();
-    }
-
-    // If using Sass, load it first via XMLHTTPRequest but do so only once.
-    // We don't want to include it from the get-go as it's 2 Megabytes!!
-    if (use.Sass && typeof Sass === "undefined") {
-      (function loadSass() {
-        var xmlHttp = null;
-        xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", "http://rawgit.com/medialize/sass.js/master/dist/sass.min.js", false);
-        xmlHttp.send(null);
-        var sass = document.createElement("script");
-        sass.id = "sass";
-        sass.type = "text/javascript";
-        sass.text = xmlHttp.responseText;
-        document.getElementsByTagName("head")[0].appendChild(sass);
-      })();
-    }
-
     // String to hold elements to build HTML output
     var html = '';
     html += '<!DOCTYPE html>\n';
     html += '<html lang="en">\n';
     html += '<head>\n';
     html += '<meta charset="UTF-8">\n';
-    if (use.Normalize) {
-      html += '<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css" rel="stylesheet">\n';
-    }
-    if (use.Bootstrap) {
-      html += '<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">\n';
-    }
-    if (use.Foundation) {
-      html += '<link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/css/foundation.min.css" rel="stylesheet">\n';
-    }
-    if (use.Less) {
-      html += '<style type="text/less">\n';
-    } else {
-      html += '<style type="text/css">\n';
-    }
-    if (use.Autoprefixer) {
-      html += autoprefixer({ cascade: true }).process(content.style).css;
-    } else if (use.Sass) {
-      html += Sass.compile(content.style);
-    } else {
-      html += content.style;
-    }
+    html += '<style type="text/css">\n';
+    html += content.style;
     html += '\n</style>\n';
     html += '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>\n';
-    if (use.Bootstrap) {
-      html += '<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>\n';
-    }
-    if (use.Foundation) {
-      html += '<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/js/foundation/foundation.min.js"></script>\n';
-    }
-    if (use.Modernizr) {
-      html += '<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>\n';
-    }
-    if (use.Less) {
-      // Set LESS global variable to turn errorReporting off and mode to production
-      html += '<script>\nless={env: "production", errorReporting: null}\n</script>\n';
-      html += '<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.0/less.min.js"></script>\n';
-    }
+    html += '<script src="https://sdk.rafflecopter.com/v1/cptr.js"></script>\n';
     html += '</head>\n';
     html += '<body>\n';
     html += content.html;
-    // true if previewing in the preview pane; false if called by download function.
-    if (consoleJS) {
-      html += '\n<script src="js/console.min.js"></script>\n';
-    }
     html += '\n<script>\n';
     html += content.js;
     html += '\n</script>\n';
@@ -319,19 +236,16 @@
     return html;
   }
 
-  // Toggle live edit/preview mode. It's sometimes slow or doesn't react well.
-  $("#liveEdit").on("click", function() {
-    use.liveEdit ? use.liveEdit = false:use.liveEdit = true;
-    $(this).toggleClass("btn-active");
-  });
-
+  //------------------------------------------------------------------------------
+  // Publish preview
   // Publish output from HTML, CSS, and JS textareas in the iframe below
-  // after given keyup delay if "use.liveEdit: true".
+  // after given keyup delay
+
   htmlField.getSession().on("change", function(e) {
-    if (use.liveEdit) preview(1000);
+    preview(1000);
   });
   cssField.getSession().on("change", function(e) {
-    if (use.liveEdit) preview(2000);
+    preview(2000);
   });
 
   // Update preview window AND js console on click of "Run" button
@@ -347,6 +261,7 @@
     }
     timer = window.setTimeout(function() {
       timer = null;
+
       // pass true as we want the pseudo console.js script
       //console.time('buildOutput'); // start timer for debugging
       var textToWrite = buildOutput(true);
@@ -357,7 +272,26 @@
     }, delay);
   }
 
-  // Download HTML/CSS/JS
+  //------------------------------------------------------------------------------
+  // Copy our 'source' (WIP)
+
+  var clipboard = new Clipboard('.btn--copy');
+
+  clipboard.on('success', function(e) {
+      console.info('Action:', e.action);
+      console.info('Text:', e.text);
+      console.info('Trigger:', e.trigger);
+
+      e.clearSelection();
+  });
+
+  clipboard.on('error', function(e) {
+      console.error('Action:', e.action);
+      console.error('Trigger:', e.trigger);
+  });
+
+  //------------------------------------------------------------------------------
+  // Download our 'source'
   // Source: http://thiscouldbebetter.wordpress.com/2012/12/18/loading-editing-and-saving-a-text-file-in-html5-using-javascrip/
   $("#download").on("click", function() {
 
@@ -387,7 +321,8 @@
     $download.click();
   });
 
-  // Detect a user leaving a page and display a message
+  //------------------------------------------------------------------------------
+  // Double-check user leave/refresh
   window.onbeforeunload = function (e) {
 
     // Save current buffers into sessionStorage
@@ -403,9 +338,6 @@
     // If we haven't been passed the event get the window.event
     e = e || window.event;
     var message = "Your current session may be lost..";
-    // // For IE6-8 and Firefox prior to version 4
-    if (e) e.returnValue = message;
-    // // For Chrome, Safari, IE8+ and Opera 12+
     return message;
   };
 })();
