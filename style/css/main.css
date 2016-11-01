@@ -693,7 +693,7 @@ pre {
 
 .jqconsole {
   padding: 10px;
-  font-family: "Roboto Mono", "Monaco", "Courier New", monospace;
+  font-family: "Monaco", "Courier New", monospace;
   font-size: 12px;
   /* jqconsole ANSI*/
 }
