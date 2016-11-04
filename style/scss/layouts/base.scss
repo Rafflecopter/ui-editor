@@ -21,7 +21,7 @@ pre {
 //------------------------------------------------------------------------------
 // Body Components
 @include B(editor) {
-  height: 100vh;
+  height: 50vh;
   padding: 0 $base-pad $base-pad;
   overflow: hidden;
   box-sizing: border-box;
