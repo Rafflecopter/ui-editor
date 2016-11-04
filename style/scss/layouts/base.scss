@@ -20,7 +20,7 @@ pre {
 
 //------------------------------------------------------------------------------
 // Body Components
-@include B(page) {
+@include B(editor) {
   height: 100vh;
   padding: 0 $base-pad $base-pad;
   overflow: hidden;
@@ -37,7 +37,7 @@ pre {
   }
 }
 
-@include B(page-logo) {
+@include B(editor-logo) {
   width: 120px;
 
   svg {
@@ -46,7 +46,7 @@ pre {
   }
 }
 
-@include B(page-actions) {
+@include B(editor-actions) {
   @include flex(row, flex-end, center);
 }
 

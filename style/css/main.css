@@ -409,14 +409,14 @@ pre {
   display: none;
 }
 
-.page {
+.editor {
   height: 100vh;
   padding: 0 10px 10px;
   overflow: hidden;
   box-sizing: border-box;
 }
 
-.page__header {
+.editor__header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -425,22 +425,22 @@ pre {
   background: #FBFCFE;
 }
 
-.page__body {
+.editor__body {
   display: flex;
   flex-direction: row;
   height: calc(100vh - (50px + 10px));
 }
 
-.page-logo {
+.editor-logo {
   width: 120px;
 }
 
-.page-logo svg {
+.editor-logo svg {
   width: 120px;
   fill: #3F5670;
 }
 
-.page-actions {
+.editor-actions {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
