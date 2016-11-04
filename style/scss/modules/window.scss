@@ -6,19 +6,13 @@
 
 @include B(window) {
   flex-grow: 1;
+  position: relative;
   width: 100%;
   height: calc(33% - (3/2 * #{$base-pad}));
   border: 1px solid $grey-light;
-  -webkit-box-shadow: inset rgba(0,0,0,.05) 0 3px 10px;
   box-shadow: inset rgba(0,0,0,.05) 0 3px 10px;
-  border-radius: 3px;
-  -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-      transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  position: relative;
 
   &:hover {
     border-color: rgba($grey-mid, 0.5);
@@ -26,6 +20,14 @@
 
   &:focus {
     border-color: $grey-mid;
+  }
+
+  &:first-child {
+    border-top-left-radius: 3px;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: 3px;
   }
 
   &:not(:last-child) {

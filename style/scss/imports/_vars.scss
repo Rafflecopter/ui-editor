@@ -40,7 +40,8 @@ $font-size-textbox: in-rems(18px);
 //------------------------------------------------------------------------------
 // Layout
 
-$header-height: 50px;
+$logo-size: 20px;
+$header-height: $logo-size * 1.75;
 $base-pad: 10px;
 $body-height: calc(50vh - (#{$header-height} + #{$base-pad}));
 $console-height: 100px;

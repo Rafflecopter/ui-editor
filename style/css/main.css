@@ -410,10 +410,15 @@ pre {
 }
 
 .editor {
+  display: flex;
+  flex-direction: column;
   height: 50vh;
   padding: 0 10px 10px;
   overflow: hidden;
   box-sizing: border-box;
+  background: #FBFCFE;
+  border: 1px solid #D5D9E8;
+  border-radius: 3px;
 }
 
 .editor__header {
@@ -421,22 +426,21 @@ pre {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
-  background: #FBFCFE;
+  height: 35px;
 }
 
 .editor__body {
   display: flex;
   flex-direction: row;
-  height: calc(50vh - (50px + 10px));
+  height: calc(50vh - (35px + 10px));
 }
 
 .editor-logo {
-  width: 120px;
+  width: 20px;
 }
 
 .editor-logo svg {
-  width: 120px;
+  width: 20px;
   fill: #3F5670;
 }
 
@@ -548,19 +552,13 @@ pre {
 
 .window {
   flex-grow: 1;
+  position: relative;
   width: 100%;
   height: calc(33% - (3/2 * 10px));
   border: 1px solid #D5D9E8;
-  -webkit-box-shadow: inset rgba(0, 0, 0, 0.05) 0 3px 10px;
   box-shadow: inset rgba(0, 0, 0, 0.05) 0 3px 10px;
-  border-radius: 3px;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  position: relative;
 }
 
 .window:hover {
@@ -569,6 +567,14 @@ pre {
 
 .window:focus {
   border-color: #7F929D;
+}
+
+.window:first-child {
+  border-top-left-radius: 3px;
+}
+
+.window:last-child {
+  border-bottom-left-radius: 3px;
 }
 
 .window:not(:last-child) {
@@ -616,8 +622,10 @@ pre {
   margin-left: 10px;
   overflow: hidden;
   appearance: none;
+  background: white;
   border: 1px solid #D5D9E8;
-  border-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
   box-shadow: inset rgba(63, 86, 112, 0.05) 0 3px 10px;
   box-sizing: border-box;
 }

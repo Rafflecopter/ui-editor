@@ -21,15 +21,18 @@ pre {
 //------------------------------------------------------------------------------
 // Body Components
 @include B(editor) {
+  @include flex(column);
   height: 50vh;
   padding: 0 $base-pad $base-pad;
   overflow: hidden;
   box-sizing: border-box;
+  background: $grey-ghost;
+  border: 1px solid $grey-light;
+  border-radius: 3px;
 
   @include E(header) {
     @include flex(row, space-between, center);
     height: $header-height;
-    background: $grey-ghost;
   }
   @include E(body) {
     @include flex(row);
@@ -38,10 +41,10 @@ pre {
 }
 
 @include B(editor-logo) {
-  width: 120px;
+  width: $logo-size;
 
   svg {
-    width: 120px;
+    width: $logo-size;
     fill: $black;
   }
 }
