@@ -528,11 +528,32 @@ pre {
   position: absolute;
   width: 12px;
   height: 12px;
-  background: blue;
   right: 0;
   bottom: 0;
+  overflow: hidden;
   cursor: -webkit-grab;
   -webkit-user-select: none;
+}
+
+.resizer:before, .resizer:after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  background: #D5D9E8;
+  transform: rotate(-45deg);
+  z-index: 1;
+}
+
+.resizer:before {
+  width: 6px;
+  right: 2px;
+  bottom: 4px;
+}
+
+.resizer:after {
+  width: 12px;
+  left: -2px;
+  bottom: 6px;
 }
 
 .resizer:hover {
