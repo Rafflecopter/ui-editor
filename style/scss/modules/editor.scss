@@ -1,0 +1,68 @@
+//------------------------------------------------------------------------------
+// Abstract
+$editor-default: 600px;
+
+//------------------------------------------------------------------------------
+// Editor
+
+@include B(resize-editor) {
+  position: relative;
+  width: $editor-default; 
+  height: $editor-default * (2/3);
+  margin: 0 auto;
+  background: gainsboro;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @include BEM(editor) {
+    width: 100%;
+  }
+}
+
+@include B(resizer) {
+   position:absolute;
+   width: 12px;
+   height: 12px; 
+   background: blue;
+   right: 0; 
+   bottom: 0; 
+   cursor: grabbing; 
+   -webkit-user-select: none; 
+}
+
+@include B(editor) {
+  @include flex(column);
+  width: $editor-default;
+  height: 100%;
+  padding: 0 $base-pad $base-pad;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: $grey-ghost;
+  border: 1px solid $grey-light;
+  border-radius: 3px;
+
+  @include E(header) {
+    @include flex(row, space-between, center);
+    height: $header-height;
+  }
+  @include E(body) {
+    @include flex(row);
+    flex-grow: 1;
+    flex-basis: 100%;
+  }
+}
+
+@include B(editor-logo) {
+  width: $logo-size;
+
+  svg {
+    width: $logo-size;
+    fill: $black;
+  }
+}
+
+@include B(editor-actions) {
+  @include flex(row, flex-end, center);
+}

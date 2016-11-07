@@ -20,38 +20,6 @@ pre {
 
 //------------------------------------------------------------------------------
 // Body Components
-@include B(editor) {
-  @include flex(column);
-  height: 50vh;
-  padding: 0 $base-pad $base-pad;
-  overflow: hidden;
-  box-sizing: border-box;
-  background: $grey-ghost;
-  border: 1px solid $grey-light;
-  border-radius: 3px;
-
-  @include E(header) {
-    @include flex(row, space-between, center);
-    height: $header-height;
-  }
-  @include E(body) {
-    @include flex(row);
-    height: $body-height;
-  }
-}
-
-@include B(editor-logo) {
-  width: $logo-size;
-
-  svg {
-    width: $logo-size;
-    fill: $black;
-  }
-}
-
-@include B(editor-actions) {
-  @include flex(row, flex-end, center);
-}
 
 @include B(windowGroup) {
   @include flex(column, flex-start, center);

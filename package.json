@@ -10,7 +10,8 @@
     "gulp-if": "~1.2.5",
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^2.1.1",
-    "gulp-watch": "^4.2.0"
+    "gulp-watch": "^4.2.0",
+    "st": "^1.1.0"
   },
   "repository": {
     "type": "git"

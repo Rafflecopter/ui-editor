@@ -409,48 +409,6 @@ pre {
   display: none;
 }
 
-.editor {
-  display: flex;
-  flex-direction: column;
-  height: 50vh;
-  padding: 0 10px 10px;
-  overflow: hidden;
-  box-sizing: border-box;
-  background: #FBFCFE;
-  border: 1px solid #D5D9E8;
-  border-radius: 3px;
-}
-
-.editor__header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 35px;
-}
-
-.editor__body {
-  display: flex;
-  flex-direction: row;
-  height: calc(50vh - (35px + 10px));
-}
-
-.editor-logo {
-  width: 20px;
-}
-
-.editor-logo svg {
-  width: 20px;
-  fill: #3F5670;
-}
-
-.editor-actions {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-}
-
 .windowGroup {
   display: flex;
   flex-direction: column;
@@ -548,6 +506,77 @@ pre {
 
 .btn--window:not(:last-child) {
   margin-right: 4px;
+}
+
+.resize-editor {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  margin: 0 auto;
+  background: gainsboro;
+}
+
+.resize-editor:hover {
+  cursor: pointer;
+}
+
+.resize-editor .editor {
+  width: 100%;
+}
+
+.resizer {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: blue;
+  right: 0;
+  bottom: 0;
+  cursor: grabbing;
+  -webkit-user-select: none;
+}
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 100%;
+  padding: 0 10px 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #FBFCFE;
+  border: 1px solid #D5D9E8;
+  border-radius: 3px;
+}
+
+.editor__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 35px;
+}
+
+.editor__body {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-basis: 100%;
+}
+
+.editor-logo {
+  width: 20px;
+}
+
+.editor-logo svg {
+  width: 20px;
+  fill: #3F5670;
+}
+
+.editor-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .window {
