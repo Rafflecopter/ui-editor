@@ -513,11 +513,11 @@ pre {
   width: 600px;
   height: 400px;
   margin: 0 auto;
-  background: gainsboro;
 }
 
-.resize-editor:hover {
-  cursor: pointer;
+.resize-editor--resizing .resizer,
+.resize-editor--resizing .resizer:hover {
+  cursor: -webkit-grabbing;
 }
 
 .resize-editor .editor {
@@ -531,8 +531,12 @@ pre {
   background: blue;
   right: 0;
   bottom: 0;
-  cursor: grabbing;
+  cursor: -webkit-grab;
   -webkit-user-select: none;
+}
+
+.resizer:hover {
+  cursor: -webkit-grab;
 }
 
 .editor {

@@ -10,10 +10,12 @@ $editor-default: 600px;
   width: $editor-default; 
   height: $editor-default * (2/3);
   margin: 0 auto;
-  background: gainsboro;
 
-  &:hover {
-    cursor: pointer;
+  @include M(resizing) {
+    .resizer,
+    .resizer:hover {
+      cursor: -webkit-grabbing;
+    }
   }
 
   @include BEM(editor) {
@@ -22,14 +24,18 @@ $editor-default: 600px;
 }
 
 @include B(resizer) {
-   position:absolute;
-   width: 12px;
-   height: 12px; 
-   background: blue;
-   right: 0; 
-   bottom: 0; 
-   cursor: grabbing; 
-   -webkit-user-select: none; 
+  position:absolute;
+  width: 12px;
+  height: 12px; 
+  background: blue;
+  right: 0; 
+  bottom: 0; 
+  cursor: -webkit-grab;
+  -webkit-user-select: none;
+
+  &:hover {
+    cursor: -webkit-grab;
+  }
 }
 
 @include B(editor) {
