@@ -1,7 +1,18 @@
+// -----------
+// Require CSS
 require("../style/css/main.css");
+
+// -----------
+// Require JS
 require("jquery");
-require("../js/ace/ace.js");
-require("../js/ace/ext-emmet.js");
-require("../js/ace/emmet.js");
+
+// Use npm brace for ace: https://github.com/thlorenz/brace
+
+var ace = require('brace');
+require('brace/mode/html');
+require('brace/mode/css');
+require('brace/mode/javascript');
+require('brace/theme/chrome');
+
+// Our editor config
 require("../js/awsmedit.js");
-document.write(require("./content.js"));

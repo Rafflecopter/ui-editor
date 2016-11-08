@@ -41,10 +41,14 @@ function rcEdit(currEditor, defaults, id) {
   // Create Editor panes
   // Init ACE Editor and set options;
   var htmlField = ace.edit(htmlId);
+  htmlField.$blockScrolling = Infinity;
 
   if(singlesplit == false) {
     var cssField = ace.edit(cssId),
         jsField = ace.edit(jsId);
+
+    cssField.$blockScrolling = Infinity;
+    jsField.$blockScrolling = Infinity;
   }
 
   (function initAce() {
@@ -58,8 +62,8 @@ function rcEdit(currEditor, defaults, id) {
       mode: "ace/mode/html",
       tabSize: 2,
       useSoftTabs: true,
-      showPrintMargin: false,
-      enableEmmet: true
+      showPrintMargin: false
+      // enableEmmet: true
     });
 
     if (singlesplit == false) {
@@ -71,8 +75,8 @@ function rcEdit(currEditor, defaults, id) {
         mode: "ace/mode/css",
         tabSize: 2,
         useSoftTabs: true,
-        showPrintMargin: false,
-        enableEmmet: true
+        showPrintMargin: false
+        // enableEmmet: true
       });
 
       // JS Editor
