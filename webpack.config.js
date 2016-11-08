@@ -9,11 +9,13 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.css$/, loader: "style!css" }
+      { test: /\.scss$/, 
+        loaders: ["style", "css", "sass"]
+      }
     ]
   },
   resolve: {
-      modulesDirectories: ["web_modules", "node_modules", "bower_components"]
+      modulesDirectories: ["web_modules", "node_modules"]
   },
   plugins: [
     new webpack.ProvidePlugin({
