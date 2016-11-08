@@ -1,3 +1,12 @@
+var webpack = require("webpack");
+
+plugins: [
+  new webpack.ProvidePlugin({
+    $: "jquery",
+    jQuery: "jquery"
+  })
+]
+
 module.exports = {
   entry: "./js/entry.js",
   output: {

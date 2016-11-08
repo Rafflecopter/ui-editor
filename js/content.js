@@ -1,1 +1,1 @@
-module.exports = "It works from content.jssss.";
+module.exports = "It works from content.js.";
