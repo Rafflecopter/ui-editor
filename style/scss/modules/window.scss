@@ -4,7 +4,7 @@
 //------------------------------------------------------------------------------
 // Window
 
-@include B(window) {
+.window {
   flex-grow: 1;
   position: relative;
   width: 100%;
@@ -34,7 +34,7 @@
     margin-bottom: $base-pad;
   }
 
-  @include M(closed) {
+  &.window--closed {
     height: $window-btn-height + (2 * $window-btn-offset);
     flex-basis: $window-btn-height + (2 * $window-btn-offset);
     flex-grow: 0;
@@ -51,7 +51,7 @@
       border-radius: 3px;
     }
 
-    @include BEM(btn, $mods:window) {
+    .btn--window {
       span:after {
         top: 6px;
         border-top-color: transparent;
@@ -61,7 +61,7 @@
   }
 }
 
-@include B(window-btns) {
+.window-btns {
   @include flex(row);
   position: absolute;
   height: $window-btn-height;

@@ -5,7 +5,7 @@
 //------------------------------------------------------------------------------
 // Preview
 
-@include B(preview) {
+.preview {
   position: relative;
   width: 60%;
   height: 100%;
@@ -19,7 +19,7 @@
   box-shadow: inset rgba($black, 0.05) 0 3px 10px;
   box-sizing: border-box;
 
-  @include BEM(window-btns) {
+  .window-btns {
     top: initial;
     bottom: 2px;
   }

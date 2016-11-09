@@ -14,9 +14,9 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-      modulesDirectories: ["web_modules", "node_modules"]
-  },
+  // resolve: {
+  //     modulesDirectories: ["web_modules", "node_modules"]
+  // },
   plugins: [
     new webpack.ProvidePlugin({
       $: "jquery",

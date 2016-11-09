@@ -43,7 +43,7 @@ function rcEdit(currEditor, defaults, id) {
   var htmlField = ace.edit(htmlId);
   htmlField.$blockScrolling = Infinity;
 
-  if(singlesplit == false) {
+  if(singlesplit === false) {
     var cssField = ace.edit(cssId),
         jsField = ace.edit(jsId);
 
@@ -66,7 +66,7 @@ function rcEdit(currEditor, defaults, id) {
       // enableEmmet: true
     });
 
-    if (singlesplit == false) {
+    if (singlesplit === false) {
 
       // CSS Editor
       cssField.setOptions({
@@ -94,7 +94,7 @@ function rcEdit(currEditor, defaults, id) {
     (function defaultsGet() {
       htmlField.setValue(defaults.html);
 
-      if (singlesplit == false) {
+      if (singlesplit === false) {
         cssField.setValue(defaults.css);
         cssField.clearSelection();
         jsField.setValue(defaults.js);
@@ -110,7 +110,7 @@ function rcEdit(currEditor, defaults, id) {
   //------------------------------------------------------------------------------
   // Toggle editor panes
 
-  if(singlesplit == false) {
+  if(singlesplit === false) {
     var panes = {
       // Return the number of editor panes displayed
       count: function() {
@@ -174,7 +174,7 @@ function rcEdit(currEditor, defaults, id) {
   function buildOutput() {
     var outputHtml = '';
 
-    if(singlesplit == true) {
+    if(singlesplit === true) {
       outputHtml = htmlField.getValue();
     } else {
       var content = {
@@ -231,7 +231,7 @@ function rcEdit(currEditor, defaults, id) {
     preview(1000);
   });
 
-  if(singlesplit == false) {
+  if(singlesplit === false) {
     cssField.on("change", function(e) {
       preview(2000);
     });

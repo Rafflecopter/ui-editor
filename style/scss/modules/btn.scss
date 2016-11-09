@@ -5,9 +5,9 @@
 //------------------------------------------------------------------------------
 // Btn
 
-@include B(btn) {
+.btn {
   padding: 0;
-  @include M(inline) {
+  &.btn--inline {
     display: block;
     margin-left: 10px;
     color: $black;
@@ -21,7 +21,7 @@
     }
   }
 
-  @include M(window) {
+  &.btn--window {
     @include flex(row, $align:center);
     height: 100%;
     padding: 0 6px;
