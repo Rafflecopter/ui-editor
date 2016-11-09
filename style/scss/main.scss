@@ -1,16 +1,5 @@
-// Setup
-@import "imports";
-
-// Vendor
-@import "vendor/normalize";
-
-// Layouts
-@import "layouts/base";
-
-// Modules
+@import "./_mixins";
+@import "./_vars";
+@import "./layout";
 @import "modules/core";
-
-
-// App
-@import "typography";
 

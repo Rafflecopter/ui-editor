@@ -5,25 +5,25 @@ $editor-default: 600px;
 //------------------------------------------------------------------------------
 // Editor
 
-@include B(resize-editor) {
+.resize-editor {
   position: relative;
   width: $editor-default; 
   height: $editor-default * (2/3);
   margin: 0 auto;
 
-  @include M(resizing) {
+  &.resize--resizing {
     .resizer,
     .resizer:hover {
       cursor: -webkit-grabbing;
     }
   }
 
-  @include BEM(editor) {
+  .editor {
     width: 100%;
   }
 }
 
-@include B(resizer) {
+.resizer {
   position:absolute;
   width: 12px;
   height: 12px;
@@ -60,7 +60,7 @@ $editor-default: 600px;
   }
 }
 
-@include B(editor) {
+.editor {
   @include flex(column);
   width: $editor-default;
   height: 100%;
@@ -71,18 +71,18 @@ $editor-default: 600px;
   border: 1px solid $grey-light;
   border-radius: 3px;
 
-  @include E(header) {
+  .editor__header {
     @include flex(row, space-between, center);
     height: $header-height;
   }
-  @include E(body) {
+  .editor__body {
     @include flex(row);
     flex-grow: 1;
     flex-basis: 100%;
   }
 }
 
-@include B(editor-logo) {
+.editor-logo {
   width: $logo-size;
 
   svg {
@@ -91,6 +91,6 @@ $editor-default: 600px;
   }
 }
 
-@include B(editor-actions) {
+.editor-actions {
   @include flex(row, flex-end, center);
 }

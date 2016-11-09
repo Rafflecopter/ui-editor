@@ -14,14 +14,14 @@ pre {
   height: 100%;
 }
 
-@include B(defaults) {
+.defaults {
   display: none;
 }
 
 //------------------------------------------------------------------------------
 // Body Components
 
-@include B(windowGroup) {
+.windowGroup {
   @include flex(column, flex-start, center);
   width: 40%;
   height: 100%;

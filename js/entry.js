@@ -7,7 +7,7 @@ require("../style/scss/main.scss");
 require("jquery");
 
 // Use npm brace for ace: https://github.com/thlorenz/brace
-var ace = require('brace');
+require('brace');
 require('brace/mode/html');
 require('brace/mode/css');
 require('brace/mode/javascript');

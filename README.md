@@ -10,10 +10,14 @@ Rafflecopter UI Editor
 
 ## Local Build
 Compiling the editor can be completed in a series of simple commands.
+
 1. `npm install`
+
 2. `webpack`
 
 ## Local Serve
 Webpack will poll for changes and serve at **http://localhost:8080/webpack-dev-server/**
+
 1. `npm install`
+
 2. `webpack-dev-server`

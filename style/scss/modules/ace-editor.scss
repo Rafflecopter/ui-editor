@@ -5,16 +5,16 @@
 //------------------------------------------------------------------------------
 // Ace Editor
 
-@include B(ace_editor) {
+.ace_editor {
   margin: 0;
 }
 
 
 // stuff for resize. do better
-@include B(ace_content) {
+.ace_content {
   height: 100%!important;
 }
 
-@include B(ace_gutter-layer) {
+.ace_gutter-layer {
   height: 100%!important;
 }
