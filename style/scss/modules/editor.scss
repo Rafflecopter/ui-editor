@@ -80,6 +80,14 @@ $editor-default: 600px;
     flex-grow: 1;
     flex-basis: 100%;
   }
+
+  &.editor--has-preview {
+    .windowGroup {
+      @include flex(column, flex-start, center);
+      width: 40%;
+      height: 100%;
+    }
+  }
 }
 
 .editor-logo {
