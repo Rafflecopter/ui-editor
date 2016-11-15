@@ -34782,8 +34782,7 @@
 	$(".editor").each(function() {
 	  var self = $(this),
 	      id = uniqueId(),
-	      str = self.find("#default-html").html(),
-	      basic = str.replace(/\<br>/g, '\n');
+	      basic = self.find("#default").html().replace(/\<br>/g, '\n');
 
 	  defaults = {
 	    html: basic,
