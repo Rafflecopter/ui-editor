@@ -311,10 +311,11 @@ function removeClass(name, element) {
 
 $(".editor").each(function() {
   var self = $(this),
-      id = uniqueId();
+      id = uniqueId(),
+      basic = self.find("#default").html().replace(/\<br>/g, '\n');
 
   defaults = {
-    html: $(self).find("#default-html").html(),
+    html: basic,
     css: $(self).find("#default-css").html(),
     js: $(self).find("#default-js").html()
   };
