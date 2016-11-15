@@ -92,9 +92,11 @@ $editor-default: 600px;
 
 .editor-logo {
   width: $logo-size;
+  height: $logo-size - 2;
 
   svg {
     width: $logo-size;
+    height: $logo-size;
     fill: $black;
   }
 }
