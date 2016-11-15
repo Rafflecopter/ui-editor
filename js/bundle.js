@@ -34781,10 +34781,12 @@
 
 	$(".editor").each(function() {
 	  var self = $(this),
-	      id = uniqueId();
+	      id = uniqueId(),
+	      str = self.find("#default-html").html(),
+	      basic = str.replace(/\<br>/g, '\n');
 
 	  defaults = {
-	    html: $(self).find("#default-html").html(),
+	    html: basic,
 	    css: $(self).find("#default-css").html(),
 	    js: $(self).find("#default-js").html()
 	  };
