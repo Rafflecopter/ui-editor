@@ -5,7 +5,7 @@ function rcEdit(currEditor, defaults, id) {
   // Globals
   var singlesplit = false,
       newContent,
-      hasPreview = $(currEditor).attr('data-preview'),
+      hasPreview = currEditor.attr('data-preview'),
       htmlId = 'html_' + id,
       cssId = 'css_' + id,
       jsId = 'js_' + id,
@@ -14,6 +14,13 @@ function rcEdit(currEditor, defaults, id) {
 
   // ---
   // End Globals
+
+  //------------------------------------------------------------------------------
+  // Let parent apply preview (page-builder) in addition to data attribute
+  
+  if (currEditor.parent().hasClass("has-preview")){
+    hasPreview = true;
+  }
 
   //------------------------------------------------------------------------------
   // Generate ACE Editor DOM
