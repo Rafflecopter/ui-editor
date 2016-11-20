@@ -34789,7 +34789,13 @@
 	$(".editor").each(function() {
 	  var self = $(this),
 	      id = uniqueId(),
-	      basic = self.find("#default").html().replace(/\<br>/g, '\n');
+	      basic = self.find("#default");
+
+	  if(basic.is("textarea")) {
+	    basic = basic.val();
+	  } else {
+	    basic = basic.html().replace(/\<br>/g, '\n')
+	  }
 
 	  defaults = {
 	    html: basic,
