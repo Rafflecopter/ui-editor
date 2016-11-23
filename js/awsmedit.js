@@ -40,11 +40,11 @@ function rcEdit(currEditor, defaults, id) {
       + (hasPreview
         ? "editor editor--single editor--has-preview\">"
         : "editor editor--single\">")
-      + "<div class=\"editor__header\"><div class=\"editor-logo\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\"><path d=\"M17.225 21.335l.955-5.108 5.03.94-.954 5.108-5.03-.94zm8.927 1.668l.953-5.108 5.03.94-.954 5.11-5.028-.942z\"/><path d=\"M37.016 24.857c-.57 2.3-1.59 4.142-3.057 5.522-1.468 1.38-3.284 2.363-5.45 2.95-2.168.586-4.25.694-6.25.326-2-.368-3.908-1.213-5.724-2.533-1.816-1.32-3.163-2.888-4.04-4.7-.878-1.812-1.178-3.896-.9-6.25l1.954.36c-.164 1.787.147 3.41.936 4.863.788 1.455 1.906 2.69 3.353 3.704 1.446 1.016 3.073 1.69 4.88 2.022s3.57.283 5.284-.148c1.713-.433 3.195-1.188 4.447-2.268 1.25-1.078 2.122-2.48 2.614-4.21l1.952.36z\"/><path d=\"M2.656 23.598l11.525 2.04-.273 1.548-11.525-2.04zM1.6 20.896l1.59 6.552\"/><path d=\"M1.853 20.835l1.59 6.552-.51.124-1.59-6.55z\"/><path d=\"M25.465 14.96l-.367 3.055\"/><path d=\"M25.074 14.912l.782.094-.37 3.056-.78-.094z\"/><path d=\"M2.62 9.675l46.378 9.187-.238 1.2-46.38-9.186zM10.93 33.784l22.38 4.326-.21 1.078-22.377-4.326zM19.115 34.06l-.11 1.972\"/><path d=\"M18.723 34.037l.787.043-.108 1.973-.787-.043z\"/><g><path d=\"M23.97 35.11l-.11 1.972\"/><path d=\"M23.578 35.087l.787.043-.108 1.973-.787-.043z\"/></g><g><path d=\"M34.89 36.34l-2.685 3.667\"/><path d=\"M34.678 36.18l.424.312-2.687 3.666-.423-.31z\"/></g></svg></div><div class=\"editor-actions\"></div></div><div class=\"editor__body\"><div class=\"windowGroup\"><div class=\"window html\"><pre id=\""
+      + "<div class=\"editor__header\"><div class=\"editor-logo\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\"><path d=\"M17.225 21.335l.955-5.108 5.03.94-.954 5.108-5.03-.94zm8.927 1.668l.953-5.108 5.03.94-.954 5.11-5.028-.942z\"/><path d=\"M37.016 24.857c-.57 2.3-1.59 4.142-3.057 5.522-1.468 1.38-3.284 2.363-5.45 2.95-2.168.586-4.25.694-6.25.326-2-.368-3.908-1.213-5.724-2.533-1.816-1.32-3.163-2.888-4.04-4.7-.878-1.812-1.178-3.896-.9-6.25l1.954.36c-.164 1.787.147 3.41.936 4.863.788 1.455 1.906 2.69 3.353 3.704 1.446 1.016 3.073 1.69 4.88 2.022s3.57.283 5.284-.148c1.713-.433 3.195-1.188 4.447-2.268 1.25-1.078 2.122-2.48 2.614-4.21l1.952.36z\"/><path d=\"M2.656 23.598l11.525 2.04-.273 1.548-11.525-2.04zM1.6 20.896l1.59 6.552\"/><path d=\"M1.853 20.835l1.59 6.552-.51.124-1.59-6.55z\"/><path d=\"M25.465 14.96l-.367 3.055\"/><path d=\"M25.074 14.912l.782.094-.37 3.056-.78-.094z\"/><path d=\"M2.62 9.675l46.378 9.187-.238 1.2-46.38-9.186zM10.93 33.784l22.38 4.326-.21 1.078-22.377-4.326zM19.115 34.06l-.11 1.972\"/><path d=\"M18.723 34.037l.787.043-.108 1.973-.787-.043z\"/><g><path d=\"M23.97 35.11l-.11 1.972\"/><path d=\"M23.578 35.087l.787.043-.108 1.973-.787-.043z\"/></g><g><path d=\"M34.89 36.34l-2.685 3.667\"/><path d=\"M34.678 36.18l.424.312-2.687 3.666-.423-.31z\"/></g></svg></div><div class=\"editor-actions\"></div></div><div class=\"editor__body\"><div class=\"windowGroup\" id=\"code-" + id + "\"><div class=\"window html\"><pre id=\""
       + htmlId 
       + "\"></pre></div></div>"
       + (hasPreview
-        ? "<div class=\"preview\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>"
+        ? "<span class=\"redistribute\" id=\"redist-" + id + "\"></span><div class=\"preview\" id=\"preview-" + id + "\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>"
         : "</div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>");
 
     } else {
@@ -56,7 +56,7 @@ function rcEdit(currEditor, defaults, id) {
       + (hasPreview
         ? "editor editor--has-preview\">"
         : "editor\">")
-      + "<div class=\"editor__header\"><div class=\"editor-logo\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\"><path d=\"M17.225 21.335l.955-5.108 5.03.94-.954 5.108-5.03-.94zm8.927 1.668l.953-5.108 5.03.94-.954 5.11-5.028-.942z\"/><path d=\"M37.016 24.857c-.57 2.3-1.59 4.142-3.057 5.522-1.468 1.38-3.284 2.363-5.45 2.95-2.168.586-4.25.694-6.25.326-2-.368-3.908-1.213-5.724-2.533-1.816-1.32-3.163-2.888-4.04-4.7-.878-1.812-1.178-3.896-.9-6.25l1.954.36c-.164 1.787.147 3.41.936 4.863.788 1.455 1.906 2.69 3.353 3.704 1.446 1.016 3.073 1.69 4.88 2.022s3.57.283 5.284-.148c1.713-.433 3.195-1.188 4.447-2.268 1.25-1.078 2.122-2.48 2.614-4.21l1.952.36z\"/><path d=\"M2.656 23.598l11.525 2.04-.273 1.548-11.525-2.04zM1.6 20.896l1.59 6.552\"/><path d=\"M1.853 20.835l1.59 6.552-.51.124-1.59-6.55z\"/><path d=\"M25.465 14.96l-.367 3.055\"/><path d=\"M25.074 14.912l.782.094-.37 3.056-.78-.094z\"/><path d=\"M2.62 9.675l46.378 9.187-.238 1.2-46.38-9.186zM10.93 33.784l22.38 4.326-.21 1.078-22.377-4.326zM19.115 34.06l-.11 1.972\"/><path d=\"M18.723 34.037l.787.043-.108 1.973-.787-.043z\"/><g><path d=\"M23.97 35.11l-.11 1.972\"/><path d=\"M23.578 35.087l.787.043-.108 1.973-.787-.043z\"/></g><g><path d=\"M34.89 36.34l-2.685 3.667\"/><path d=\"M34.678 36.18l.424.312-2.687 3.666-.423-.31z\"/></g></svg></div><div class=\"editor-actions\"></div></div><div class=\"editor__body\"><div class=\"windowGroup\"><div class=\"window html\"><pre id=\""
+      + "<div class=\"editor__header\"><div class=\"editor-logo\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\"><path d=\"M17.225 21.335l.955-5.108 5.03.94-.954 5.108-5.03-.94zm8.927 1.668l.953-5.108 5.03.94-.954 5.11-5.028-.942z\"/><path d=\"M37.016 24.857c-.57 2.3-1.59 4.142-3.057 5.522-1.468 1.38-3.284 2.363-5.45 2.95-2.168.586-4.25.694-6.25.326-2-.368-3.908-1.213-5.724-2.533-1.816-1.32-3.163-2.888-4.04-4.7-.878-1.812-1.178-3.896-.9-6.25l1.954.36c-.164 1.787.147 3.41.936 4.863.788 1.455 1.906 2.69 3.353 3.704 1.446 1.016 3.073 1.69 4.88 2.022s3.57.283 5.284-.148c1.713-.433 3.195-1.188 4.447-2.268 1.25-1.078 2.122-2.48 2.614-4.21l1.952.36z\"/><path d=\"M2.656 23.598l11.525 2.04-.273 1.548-11.525-2.04zM1.6 20.896l1.59 6.552\"/><path d=\"M1.853 20.835l1.59 6.552-.51.124-1.59-6.55z\"/><path d=\"M25.465 14.96l-.367 3.055\"/><path d=\"M25.074 14.912l.782.094-.37 3.056-.78-.094z\"/><path d=\"M2.62 9.675l46.378 9.187-.238 1.2-46.38-9.186zM10.93 33.784l22.38 4.326-.21 1.078-22.377-4.326zM19.115 34.06l-.11 1.972\"/><path d=\"M18.723 34.037l.787.043-.108 1.973-.787-.043z\"/><g><path d=\"M23.97 35.11l-.11 1.972\"/><path d=\"M23.578 35.087l.787.043-.108 1.973-.787-.043z\"/></g><g><path d=\"M34.89 36.34l-2.685 3.667\"/><path d=\"M34.678 36.18l.424.312-2.687 3.666-.423-.31z\"/></g></svg></div><div class=\"editor-actions\"></div></div><div class=\"editor__body\"><div class=\"windowGroup\" id=\"code-" + id + "\"><div class=\"window html\"><pre id=\""
       + htmlId 
       + "\"></pre><div class=\"window-btns\"><button class=\"btn btn--window togglePane\" id=\"htmlToggle\" data-editor=\"html\" title=\"Toggle HTML\">HTML<span></span></button></div></div><div class=\"window css\"><pre id=\"" 
       + cssId 
@@ -65,7 +65,7 @@ function rcEdit(currEditor, defaults, id) {
       +"\"></pre><div class=\"window-btns\"><button class=\"btn btn--window\" id=\"run\" title=\"Run...\">Run</button><button class=\"btn btn--window togglePane\" id=\"jsToggle\" data-editor=\"js\" title=\"Toggle JS\">JavaScript<span></span></button></div></div></div>"
 
       + (hasPreview
-        ? "<div class=\"preview\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div></div>"
+        ? "<span class=\"redistribute\" id=\"redist-" + id + "\"></span><div class=\"preview\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div></div>"
         : "</div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>");
     }
 
@@ -202,6 +202,45 @@ function rcEdit(currEditor, defaults, id) {
 
     addClass('resize-editor--resizable', resizr);
     resizer.addEventListener('mousedown', initDrag, false);
+  }, false);
+
+  //------------------------------------------------------------------------------
+  // Redistribute Editor
+  var redistr = document.getElementById(editorWrapId),
+      startX, 
+      startCode = $(redistr).find('.windowGroup').width(),
+      startPreview;
+
+  function initDist(e) {
+    startX = e.clientX;
+     //startWindow = parseInt(document.defaultView.getComputedStyle(resizr).width, 10);
+     document.documentElement.addEventListener('mousemove', doRedist, false);
+     document.documentElement.addEventListener('mouseup', stopRedist, false);
+     //console.log(startWindow)
+  }
+
+  // Trigger css width change on drag
+  function doRedist(e) {
+    console.log('redisting');
+    //redistCode.style.width = (startCode + ((e.clientX - startX) * 2)) + 'px';
+    addClass('resize-editor--redisting', redistr);
+  }
+
+  // Remove listeners and abort when dragging stops
+  function stopRedist(e) {
+    // document.documentElement.removeEventListener('mousemove', doDrag, false);
+    // document.documentElement.removeEventListener('mouseup', stopDrag, false);
+    removeClass('resize-editor--redisting', redistr);
+    console.log('stop redist')
+  }
+
+  redistr.addEventListener('mouseover', function init() {
+    var redist = document.getElementById('redist-' + id),
+        redistCode = document.getElementById('code-' + id),
+        redistPreview = document.getElementById('preview-' + id)
+
+    addClass('resize-editor--redistribute', redistr);
+    redist.addEventListener('mousedown', initDist, false);
   }, false);
 
   //------------------------------------------------------------------------------
