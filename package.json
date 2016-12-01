@@ -6,6 +6,7 @@
     "css-loader": "^0.25.0",
     "node-sass": "^3.11.2",
     "sass-loader": "^4.0.2",
+    "split.js": "^1.1.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"

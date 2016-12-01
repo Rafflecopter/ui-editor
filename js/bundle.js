@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/js/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -59,8 +59,12 @@
 	__webpack_require__(14);
 	__webpack_require__(15);
 
+	//require('../js/split.min.js');
+
+
 	// Our editor config
 	__webpack_require__(16);
+
 
 /***/ },
 /* 1 */
@@ -34676,46 +34680,65 @@
 
 	  //------------------------------------------------------------------------------
 	  // Redistribute Editor
-	  var redistr = $('redist-' + id),
+	  var redistr = document.getElementById('redist-' + id),
 	      redistCode = document.getElementById('code-' + id),
 	      redistPreview = document.getElementById('preview-' + id),
 	      startX, 
-	      startCode = $(redistr).find('.windowGroup').width(),
-	      startPreview;
+	      startCode = $(resizr).find('.windowGroup').width(),
+	      startPreview = $(resizr).find('.preview').width();
 
-	  function initDist(e) {
-	    //startX = e.clientX;
-	    e.mousemove(function( event ) {
-	      console.log('yoo')
-	    });
-	     //startWindow = parseInt(document.defaultView.getComputedStyle(resizr).width, 10);
-	     document.documentElement.addEventListener('mousemove', doRedist, false);
-	     document.documentElement.addEventListener('mouseup', stopRedist, false);
-	     //console.log(startWindow)
+	  function initDist(redistEl) {
+	//    startX = e.clientX;
+	console.log('blah')
+	    
+	     var startEditor = $(resizr).width();
+	     //redistr.onmousemove = function() { doRedist(startEditor) };
+	    document.documentElement.addEventListener('mousemove', doRedist(startEditor), false);
+	    document.documentElement.addEventListener('mouseup', stopRedist, false);
 	  }
 
 	  // Trigger css width change on drag
-	  function doRedist(e) {
+	  function doRedist(startWidth) {
 	    console.log('redisting');
+	    // $(e).mousemove(function( event ) {
+	    //   var msg = "Handler for .mousemove() called at ";
+	    //   msg += event.pageX + ", " + event.pageY;
+	    //   console.log( msg );
+	    // });
 	    //redistCode.style.width = (startCode + ((e.clientX - startX) * 2)) + 'px';
-	    addClass('resize-editor--redisting', redistr);
+	    var cursorX = (event.pageX) + 'px',
+	        redistCodeWidth = 'calc(' + cursorX + ' - (100vw - ' + startWidth + 'px) / 2)',
+	        redistRedistrWidth = 'calc((' + cursorX + ' - (100vw - ' + startWidth + 'px) / 2))';
+	        //console.log(redistCodeWidth);
+	        console.log(cursorX)
+	    $(redistCode).css('width', redistCodeWidth);
+	    $(redistr).css('left', redistRedistrWidth );
+	    
+	    addClass('resize-editor--redisting', resizr);
 	  }
 
 	  // Remove listeners and abort when dragging stops
 	  function stopRedist(e) {
-	    // document.documentElement.removeEventListener('mousemove', doDrag, false);
-	    // document.documentElement.removeEventListener('mouseup', stopDrag, false);
-	    removeClass('resize-editor--redisting', redistr);
 	    console.log('stop redist')
+	    $(document).off("mousemove");
+
+	    document.documentElement.removeEventListener('mousemove', doRedist, false);
+	    document.documentElement.removeEventListener('mouseup', stopRedist, false);
 	  }
 
-	  redistr.mousedown(function() {
-	    initDist(this);
-	    console.log(this);
-	  });
+	  if (redistr != null) {
+	    redistr.onmousedown = function() { initDist(redistr) };
+	    redistr.onmouseup = function() { stopRedist() };
+	  }
 
 
-	  //redistr.addEventListener('mousedown', initDist, false);
+	//  mouse down > listen for drag
+	//               on drag > resize
+	//  mouse up   > stop all
+
+
+	//offset = posX - ((100vw - editorW) / 2)
+
 
 	  //------------------------------------------------------------------------------
 	  // Concat our preview
@@ -34847,6 +34870,18 @@
 	  };
 
 	  rcEdit(self, defaults, id);
+
+	  var code = '#code-' + id,
+	      preview = '#preview-' + id;
+
+	  console.log(code);
+
+	  Split([code, preview], {
+	    sizes: [25, 75],
+	    minSize: 200
+	  });
+
+	  console.log(editor)
 	});
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))

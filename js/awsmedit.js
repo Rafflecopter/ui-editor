@@ -44,7 +44,7 @@ function rcEdit(currEditor, defaults, id) {
       + htmlId 
       + "\"></pre></div></div>"
       + (hasPreview
-        ? "<span class=\"redistribute\" id=\"redist-" + id + "\"></span><div class=\"preview\" id=\"preview-" + id + "\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>"
+        ? "<div class=\"preview\" id=\"preview-" + id + "\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>"
         : "</div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>");
 
     } else {
@@ -65,7 +65,7 @@ function rcEdit(currEditor, defaults, id) {
       +"\"></pre><div class=\"window-btns\"><button class=\"btn btn--window\" id=\"run\" title=\"Run...\">Run</button><button class=\"btn btn--window togglePane\" id=\"jsToggle\" data-editor=\"js\" title=\"Toggle JS\">JavaScript<span></span></button></div></div></div>"
 
       + (hasPreview
-        ? "<span class=\"redistribute\" id=\"redist-" + id + "\"></span><div class=\"preview\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div></div>"
+        ? "</span><div class=\"preview\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div></div>"
         : "</div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>");
     }
 
@@ -206,46 +206,23 @@ function rcEdit(currEditor, defaults, id) {
 
   //------------------------------------------------------------------------------
   // Redistribute Editor
-  var redistr = $('redist-' + id),
-      redistCode = document.getElementById('code-' + id),
-      redistPreview = document.getElementById('preview-' + id),
-      startX, 
-      startCode = $(redistr).find('.windowGroup').width(),
-      startPreview;
 
-  function initDist(e) {
-    //startX = e.clientX;
-    e.mousemove(function( event ) {
-      console.log('yoo')
+  if(hasPreview) {
+    console.log('this')
+    var code = '#code-' + id,
+        preview = '#preview-' + id;
+
+    Split([code, preview], {
+      sizes: [25, 75],
+      minSize: 200
     });
-     //startWindow = parseInt(document.defaultView.getComputedStyle(resizr).width, 10);
-     document.documentElement.addEventListener('mousemove', doRedist, false);
-     document.documentElement.addEventListener('mouseup', stopRedist, false);
-     //console.log(startWindow)
+
+  } else {
+
   }
 
-  // Trigger css width change on drag
-  function doRedist(e) {
-    console.log('redisting');
-    //redistCode.style.width = (startCode + ((e.clientX - startX) * 2)) + 'px';
-    addClass('resize-editor--redisting', redistr);
-  }
+  
 
-  // Remove listeners and abort when dragging stops
-  function stopRedist(e) {
-    // document.documentElement.removeEventListener('mousemove', doDrag, false);
-    // document.documentElement.removeEventListener('mouseup', stopDrag, false);
-    removeClass('resize-editor--redisting', redistr);
-    console.log('stop redist')
-  }
-
-  redistr.mousedown(function() {
-    initDist(this);
-    console.log(this);
-  });
-
-
-  //redistr.addEventListener('mousedown', initDist, false);
 
   //------------------------------------------------------------------------------
   // Concat our preview
