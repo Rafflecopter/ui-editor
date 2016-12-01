@@ -206,13 +206,18 @@ function rcEdit(currEditor, defaults, id) {
 
   //------------------------------------------------------------------------------
   // Redistribute Editor
-  var redistr = document.getElementById(editorWrapId),
+  var redistr = $('redist-' + id),
+      redistCode = document.getElementById('code-' + id),
+      redistPreview = document.getElementById('preview-' + id),
       startX, 
       startCode = $(redistr).find('.windowGroup').width(),
       startPreview;
 
   function initDist(e) {
-    startX = e.clientX;
+    //startX = e.clientX;
+    e.mousemove(function( event ) {
+      console.log('yoo')
+    });
      //startWindow = parseInt(document.defaultView.getComputedStyle(resizr).width, 10);
      document.documentElement.addEventListener('mousemove', doRedist, false);
      document.documentElement.addEventListener('mouseup', stopRedist, false);
@@ -234,14 +239,13 @@ function rcEdit(currEditor, defaults, id) {
     console.log('stop redist')
   }
 
-  redistr.addEventListener('mouseover', function init() {
-    var redist = document.getElementById('redist-' + id),
-        redistCode = document.getElementById('code-' + id),
-        redistPreview = document.getElementById('preview-' + id)
+  redistr.mousedown(function() {
+    initDist(this);
+    console.log(this);
+  });
 
-    addClass('resize-editor--redistribute', redistr);
-    redist.addEventListener('mousedown', initDist, false);
-  }, false);
+
+  //redistr.addEventListener('mousedown', initDist, false);
 
   //------------------------------------------------------------------------------
   // Concat our preview
