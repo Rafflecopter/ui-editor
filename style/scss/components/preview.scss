@@ -9,7 +9,6 @@
   position: relative;
   width: 60%;
   height: 100%;
-  margin-left: $base-pad;
   overflow: hidden;
   appearance: none;
   background: white;
@@ -22,6 +21,25 @@
   .window-btns {
     top: initial;
     bottom: 2px;
+  }
+}
+
+.redistribute {
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  top: 0;
+  left: calc(40% - 1px);
+  z-index: 5;
+
+  &:hover {
+    cursor: ew-resize;
+  }
+
+  &:before {
+    @include position-center(absolute, both);
+    content: '⋮';
+    color: rgba($grey-mid, 0.5);
   }
 }
 

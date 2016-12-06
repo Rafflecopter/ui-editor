@@ -1,0 +1,43 @@
+//------------------------------------------------------------------------------
+// Abstract
+
+
+//------------------------------------------------------------------------------
+// Split
+
+.split {
+}
+
+.gutter {
+  position: relative;
+}
+
+.gutter-horizontal {
+  &:hover {
+    cursor: ew-resize;
+  }
+  &:before {
+    content: '⋮';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    color: $grey-light;
+  }
+}
+
+.gutter-vertical {
+  width: 100%;
+
+  &:hover {
+    cursor: ns-resize;
+  }
+
+  &:before {
+    content: '…';
+    @include position-center(absolute, x);
+    top: -8px;
+    z-index: 1;
+    color: $grey-light;
+  }
+}
