@@ -59,11 +59,12 @@
 	__webpack_require__(14);
 	__webpack_require__(15);
 
-	//require('../js/split.min.js');
+	//splitjs
+	__webpack_require__(16);
 
 
 	// Our editor config
-	__webpack_require__(16);
+	__webpack_require__(17);
 
 
 /***/ },
@@ -101,7 +102,7 @@
 
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\nhtml, body {\n  height: 100%; }\n\npre {\n  width: 100%;\n  height: 100%; }\n\n.defaults {\n  display: none; }\n\n.windowGroup {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%; }\n\n.btn {\n  padding: 0; }\n  .btn.btn--inline {\n    display: block;\n    margin-left: 10px;\n    color: #3F5670;\n    background: none;\n    border: none;\n    font-family: \"Helvetica Neue\", Helvetica, sans-serif;\n    font-size: 0.75rem; }\n    .btn.btn--inline:hover {\n      text-shadow: 1px 0.25px 0 #FBFCFE, -1px 0.25px 0 #FBFCFE, 2px 0 0 #FBFCFE, -2px 0 0 #FBFCFE;\n      box-shadow: inset 0 -1px 0 0 #FBFCFE, inset 0 -2px 0 0 #3F5670; }\n      .btn.btn--inline:hover:focus {\n        outline: none; }\n      .btn.btn--inline:hover:active {\n        box-shadow: inset 0 -2px 1px 0 #FBFCFE, inset 0 -3px 0 0 #3F5670; }\n  .btn.btn--window {\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    height: 100%;\n    padding: 0 6px;\n    color: #7F929D;\n    background: white;\n    border: solid 1px #D5D9E8;\n    text-align: center;\n    font-size: 0.75rem;\n    border-radius: 3px;\n    opacity: 0.8; }\n    .btn.btn--window span {\n      display: inline-block;\n      width: 10px;\n      height: 25px;\n      transform: translateX(2px); }\n    .btn.btn--window span:after {\n      content: \"\";\n      position: absolute;\n      width: 0;\n      height: 0;\n      top: 8px;\n      right: 0;\n      border: 4px solid transparent;\n      border-top-color: #3F5670; }\n    .btn.btn--window:hover {\n      opacity: 1; }\n    .btn.btn--window:focus {\n      outline: none; }\n    .btn.btn--window.console-toggle span:after {\n      top: 6px;\n      border-bottom-color: #3F5670;\n      border-top-color: transparent; }\n    .btn.btn--window.console-toggle.btn-active {\n      position: absolute;\n      right: 0;\n      bottom: 102px; }\n      .btn.btn--window.console-toggle.btn-active span:after {\n        top: 10px;\n        border-bottom-color: transparent;\n        border-top-color: #3F5670; }\n    .btn.btn--window:not(:last-child) {\n      margin-right: 4px; }\n\n.resize-editor {\n  position: relative;\n  width: 600px;\n  height: 400px;\n  margin: 0 auto; }\n  .resize-editor.resize--resizing .resizer,\n  .resize-editor.resize--resizing .resizer:hover {\n    cursor: -webkit-grabbing; }\n  .resize-editor .editor {\n    width: 100%; }\n\n.resizer {\n  position: absolute;\n  width: 12px;\n  height: 12px;\n  right: 0;\n  bottom: 0;\n  overflow: hidden;\n  cursor: -webkit-grab;\n  -webkit-user-select: none; }\n  .resizer:before, .resizer:after {\n    content: '';\n    position: absolute;\n    height: 1px;\n    background: #D5D9E8;\n    transform: rotate(-45deg);\n    z-index: 1; }\n  .resizer:before {\n    width: 6px;\n    right: 2px;\n    bottom: 4px; }\n  .resizer:after {\n    width: 12px;\n    left: -2px;\n    bottom: 6px; }\n  .resizer:hover {\n    cursor: -webkit-grab; }\n\n.editor {\n  display: flex;\n  flex-direction: column;\n  width: 600px;\n  height: 100%;\n  padding: 0 10px 10px;\n  overflow: hidden;\n  box-sizing: border-box;\n  background: #FBFCFE;\n  border: 1px solid #D5D9E8;\n  border-radius: 3px; }\n  .editor .editor__header {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n    height: 35px; }\n  .editor .editor__body {\n    display: flex;\n    flex-direction: row;\n    flex-grow: 1;\n    flex-basis: 100%; }\n  .editor.editor--has-preview .windowGroup {\n    display: flex;\n    flex-direction: column;\n    justify-content: flex-start;\n    align-items: center;\n    width: 40%;\n    height: 100%; }\n\n.editor-logo {\n  width: 20px;\n  height: 18px; }\n  .editor-logo svg {\n    width: 20px;\n    height: 20px;\n    fill: #3F5670; }\n\n.editor-actions {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center; }\n\n.window {\n  flex-grow: 1;\n  position: relative;\n  width: 100%;\n  height: calc(33% - (3/2 * 10px));\n  border: 1px solid #D5D9E8;\n  box-shadow: inset rgba(0, 0, 0, 0.05) 0 3px 10px;\n  transition: all 0.2s ease-in-out;\n  appearance: none; }\n  .window:hover {\n    border-color: rgba(127, 146, 157, 0.5); }\n  .window:focus {\n    border-color: #7F929D; }\n  .window:first-child {\n    border-top-left-radius: 3px; }\n  .window:last-child {\n    border-bottom-left-radius: 3px; }\n  .window:not(:last-child) {\n    margin-bottom: 10px; }\n  .window.window--closed {\n    height: 29px;\n    flex-basis: 29px;\n    flex-grow: 0; }\n    .window.window--closed:after {\n      content: '';\n      position: absolute;\n      width: 100%;\n      height: 100%;\n      z-index: 4;\n      top: 0;\n      left: 0;\n      background: rgba(255, 255, 255, 0.85);\n      border-radius: 3px; }\n    .window.window--closed .btn--window span:after {\n      top: 6px;\n      border-top-color: transparent;\n      border-bottom-color: #3F5670; }\n\n.window-btns {\n  display: flex;\n  flex-direction: row;\n  position: absolute;\n  height: 25px;\n  top: 2px;\n  right: 2px;\n  z-index: 30; }\n\n.preview {\n  position: relative;\n  width: 60%;\n  height: 100%;\n  margin-left: 10px;\n  overflow: hidden;\n  appearance: none;\n  background: white;\n  border: 1px solid #D5D9E8;\n  border-top-right-radius: 3px;\n  border-bottom-right-radius: 3px;\n  box-shadow: inset rgba(63, 86, 112, 0.05) 0 3px 10px;\n  box-sizing: border-box; }\n  .preview .window-btns {\n    top: initial;\n    bottom: 2px; }\n\n.redistribute {\n  position: absolute;\n  width: 10px;\n  height: 100%;\n  top: 0;\n  left: calc(40% - 1px);\n  z-index: 5; }\n  .redistribute:hover {\n    cursor: ew-resize; }\n  .redistribute:before {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    content: '\\22EE';\n    color: rgba(127, 146, 157, 0.5); }\n\niframe {\n  width: 100%;\n  height: 100%;\n  border: none; }\n\n.ace_editor {\n  margin: 0; }\n\n.ace_content {\n  height: 100% !important; }\n\n.ace_gutter-layer {\n  height: 100% !important; }\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\nhtml, body {\n  height: 100%; }\n\npre {\n  width: 100%;\n  height: 100%; }\n\n.defaults {\n  display: none; }\n\n.windowGroup {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%; }\n\n.btn {\n  padding: 0; }\n  .btn.btn--inline {\n    display: block;\n    margin-left: 10px;\n    color: #3F5670;\n    background: none;\n    border: none;\n    font-family: \"Helvetica Neue\", Helvetica, sans-serif;\n    font-size: 0.75rem; }\n    .btn.btn--inline:hover {\n      text-shadow: 1px 0.25px 0 #FBFCFE, -1px 0.25px 0 #FBFCFE, 2px 0 0 #FBFCFE, -2px 0 0 #FBFCFE;\n      box-shadow: inset 0 -1px 0 0 #FBFCFE, inset 0 -2px 0 0 #3F5670; }\n      .btn.btn--inline:hover:focus {\n        outline: none; }\n      .btn.btn--inline:hover:active {\n        box-shadow: inset 0 -2px 1px 0 #FBFCFE, inset 0 -3px 0 0 #3F5670; }\n  .btn.btn--window {\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    height: 100%;\n    padding: 0 6px;\n    color: #7F929D;\n    background: white;\n    border: solid 1px #D5D9E8;\n    text-align: center;\n    font-size: 0.75rem;\n    border-radius: 3px;\n    opacity: 0.8; }\n    .btn.btn--window span {\n      display: inline-block;\n      width: 10px;\n      height: 25px;\n      transform: translateX(2px); }\n    .btn.btn--window span:after {\n      content: \"\";\n      position: absolute;\n      width: 0;\n      height: 0;\n      top: 8px;\n      right: 0;\n      border: 4px solid transparent;\n      border-top-color: #3F5670; }\n    .btn.btn--window:hover {\n      opacity: 1; }\n    .btn.btn--window:focus {\n      outline: none; }\n    .btn.btn--window.console-toggle span:after {\n      top: 6px;\n      border-bottom-color: #3F5670;\n      border-top-color: transparent; }\n    .btn.btn--window.console-toggle.btn-active {\n      position: absolute;\n      right: 0;\n      bottom: 102px; }\n      .btn.btn--window.console-toggle.btn-active span:after {\n        top: 10px;\n        border-bottom-color: transparent;\n        border-top-color: #3F5670; }\n    .btn.btn--window:not(:last-child) {\n      margin-right: 4px; }\n\n.resize-editor {\n  position: relative;\n  width: 600px;\n  height: 400px;\n  margin: 0 auto; }\n  .resize-editor.resize--resizing .resizer,\n  .resize-editor.resize--resizing .resizer:hover {\n    cursor: -webkit-grabbing; }\n  .resize-editor .editor {\n    width: 100%; }\n\n.resizer {\n  position: absolute;\n  width: 12px;\n  height: 12px;\n  right: 0;\n  bottom: 0;\n  overflow: hidden;\n  cursor: -webkit-grab;\n  -webkit-user-select: none; }\n  .resizer:before, .resizer:after {\n    content: '';\n    position: absolute;\n    height: 1px;\n    background: #D5D9E8;\n    transform: rotate(-45deg);\n    z-index: 1; }\n  .resizer:before {\n    width: 6px;\n    right: 2px;\n    bottom: 4px; }\n  .resizer:after {\n    width: 12px;\n    left: -2px;\n    bottom: 6px; }\n  .resizer:hover {\n    cursor: -webkit-grab; }\n\n.editor {\n  display: flex;\n  flex-direction: column;\n  width: 600px;\n  height: 100%;\n  padding: 0 10px 10px;\n  overflow: hidden;\n  box-sizing: border-box;\n  background: #FBFCFE;\n  border: 1px solid #D5D9E8;\n  border-radius: 3px; }\n  .editor .editor__header {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n    height: 35px; }\n  .editor .editor__body {\n    display: flex;\n    flex-direction: row;\n    flex-grow: 1;\n    flex-basis: 100%; }\n  .editor.editor--has-preview .windowGroup {\n    display: flex;\n    flex-direction: column;\n    justify-content: flex-start;\n    align-items: center;\n    width: 40%;\n    height: 100%; }\n\n.editor-logo {\n  width: 20px;\n  height: 18px; }\n  .editor-logo svg {\n    width: 20px;\n    height: 20px;\n    fill: #3F5670; }\n\n.editor-actions {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center; }\n\n.window {\n  flex-grow: 1;\n  position: relative;\n  width: 100%;\n  height: calc(33% - (3/2 * 10px));\n  border: 1px solid #D5D9E8;\n  box-shadow: inset rgba(0, 0, 0, 0.05) 0 3px 10px;\n  transition: all 0.2s ease-in-out;\n  appearance: none;\n  overflow: hidden; }\n  .window:hover {\n    border-color: rgba(127, 146, 157, 0.5); }\n  .window:focus {\n    border-color: #7F929D; }\n  .window:first-child {\n    border-top-left-radius: 3px; }\n  .window:last-child {\n    border-bottom-left-radius: 3px; }\n  .window.window--closed {\n    height: 29px;\n    flex-basis: 29px;\n    flex-grow: 0; }\n    .window.window--closed:after {\n      content: '';\n      position: absolute;\n      width: 100%;\n      height: 100%;\n      z-index: 4;\n      top: 0;\n      left: 0;\n      background: rgba(255, 255, 255, 0.85);\n      border-radius: 3px; }\n    .window.window--closed .btn--window span:after {\n      top: 6px;\n      border-top-color: transparent;\n      border-bottom-color: #3F5670; }\n\n.window-btns {\n  display: flex;\n  flex-direction: row;\n  position: absolute;\n  height: 25px;\n  top: 2px;\n  right: 2px;\n  z-index: 30; }\n\n.preview {\n  position: relative;\n  width: 60%;\n  height: 100%;\n  overflow: hidden;\n  appearance: none;\n  background: white;\n  border: 1px solid #D5D9E8;\n  border-top-right-radius: 3px;\n  border-bottom-right-radius: 3px;\n  box-shadow: inset rgba(63, 86, 112, 0.05) 0 3px 10px;\n  box-sizing: border-box; }\n  .preview .window-btns {\n    top: initial;\n    bottom: 2px; }\n\n.redistribute {\n  position: absolute;\n  width: 10px;\n  height: 100%;\n  top: 0;\n  left: calc(40% - 1px);\n  z-index: 5; }\n  .redistribute:hover {\n    cursor: ew-resize; }\n  .redistribute:before {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    content: '\\22EE';\n    color: rgba(127, 146, 157, 0.5); }\n\niframe {\n  width: 100%;\n  height: 100%;\n  border: none; }\n\n.ace_editor {\n  margin: 0; }\n\n.ace_content {\n  height: 100% !important; }\n\n.ace_gutter-layer {\n  height: 100% !important; }\n\n.gutter {\n  position: relative; }\n\n.gutter-horizontal:hover {\n  cursor: ew-resize; }\n\n.gutter-horizontal:before {\n  content: '\\22EE';\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -100%);\n  color: #D5D9E8; }\n\n.gutter-vertical {\n  width: 100%; }\n  .gutter-vertical:hover {\n    cursor: ns-resize; }\n  .gutter-vertical:before {\n    content: '\\2026';\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    top: -8px;\n    z-index: 1;\n    color: #D5D9E8; }\n", ""]);
 
 	// exports
 
@@ -34472,8 +34473,577 @@
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// The programming goals of Split.js are to deliver readable, understandable and
+	// maintainable code, while at the same time manually optimizing for tiny minified file size,
+	// browser compatibility without additional requirements, graceful fallback (IE8 is supported)
+	// and very few assumptions about the user's page layout.
+	//
+	// Make sure all browsers handle this JS library correctly with ES5.
+	// More information here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+	'use strict';
+
+	// A wrapper function that does a couple things:
+	//
+	// 1. Doesn't pollute the global namespace. This is important for a library.
+	// 2. Allows us to mount the library in different module systems, as well as
+	//    directly in the browser.
+	(function() {
+
+	// Save the global `this` for use later. In this case, since the library only
+	// runs in the browser, it will refer to `window`. Also, figure out if we're in IE8
+	// or not. IE8 will still render correctly, but will be static instead of draggable.
+	//
+	// Save a couple long function names that are used frequently.
+	// This optimization saves around 400 bytes.
+	var global = this
+	  , isIE8 = global.attachEvent && !global[addEventListener]
+	  , document = global.document
+	  , addEventListener = 'addEventListener'
+	  , removeEventListener = 'removeEventListener'
+	  , getBoundingClientRect = 'getBoundingClientRect'
+
+	  // This library only needs two helper functions:
+	  //
+	  // The first determines which prefixes of CSS calc we need.
+	  // We only need to do this once on startup, when this anonymous function is called.
+	  // 
+	  // Tests -webkit, -moz and -o prefixes. Modified from StackOverflow:
+	  // http://stackoverflow.com/questions/16625140/js-feature-detection-to-detect-the-usage-of-webkit-calc-over-calc/16625167#16625167
+	  , calc = (function () {
+	        var el
+	          , prefixes = ["", "-webkit-", "-moz-", "-o-"]
+
+	        for (var i = 0; i < prefixes.length; i++) {
+	            el = document.createElement('div')
+	            el.style.cssText = "width:" + prefixes[i] + "calc(9px)"
+
+	            if (el.style.length) {
+	                return prefixes[i] + "calc"
+	            }
+	        }
+	    })()
+
+	  // The second helper function allows elements and string selectors to be used
+	  // interchangeably. In either case an element is returned. This allows us to
+	  // do `Split(elem1, elem2)` as well as `Split('#id1', '#id2')`.
+	  , elementOrSelector = function (el) {
+	        if (typeof el === 'string' || el instanceof String) {
+	            return document.querySelector(el)
+	        } else {
+	            return el
+	        }
+	    }
+
+	  // The main function to initialize a split. Split.js thinks about each pair
+	  // of elements as an independant pair. Dragging the gutter between two elements
+	  // only changes the dimensions of elements in that pair. This is key to understanding
+	  // how the following functions operate, since each function is bound to a pair.
+	  // 
+	  // A pair object is shaped like this:
+	  // 
+	  // {
+	  //     a: DOM element,
+	  //     b: DOM element,
+	  //     aMin: Number,
+	  //     bMin: Number,
+	  //     dragging: Boolean,
+	  //     parent: DOM element,
+	  //     isFirst: Boolean,
+	  //     isLast: Boolean,
+	  //     direction: 'horizontal' | 'vertical'
+	  // }
+	  //
+	  // The basic sequence:
+	  // 
+	  // 1. Set defaults to something sane. `options` doesn't have to be passed at all.
+	  // 2. Initialize a bunch of strings based on the direction we're splitting.
+	  //    A lot of the behavior in the rest of the library is paramatized down to
+	  //    rely on CSS strings and classes.
+	  // 3. Define the dragging helper functions, and a few helpers to go with them.
+	  // 4. Define a few more functions that "balance" the entire split instance.
+	  //    Split.js tries it's best to cope with min sizes that don't add up.
+	  // 5. Loop through the elements while pairing them off. Every pair gets an
+	  //    `pair` object, a gutter, and special isFirst/isLast properties.
+	  // 6. Actually size the pair elements, insert gutters and attach event listeners.
+	  // 7. Balance all of the pairs to accomodate min sizes as best as possible.
+	  , Split = function (ids, options) {
+	    var dimension
+	      , i
+	      , clientDimension
+	      , clientAxis
+	      , position
+	      , gutterClass
+	      , paddingA
+	      , paddingB
+	      , pairs = []
+
+	    // 1. Set defaults to something sane. `options` doesn't have to be passed at all,
+	    // so create an options object if none exists. Pixel values 10, 100 and 30 are
+	    // arbitrary but feel natural.
+	    options = typeof options !== 'undefined' ?  options : {}
+
+	    if (typeof options.gutterSize === 'undefined') options.gutterSize = 10
+	    if (typeof options.minSize === 'undefined') options.minSize = 100
+	    if (typeof options.snapOffset === 'undefined') options.snapOffset = 30
+	    if (typeof options.direction === 'undefined') options.direction = 'horizontal'
+
+	    // 2. Initialize a bunch of strings based on the direction we're splitting.
+	    // A lot of the behavior in the rest of the library is paramatized down to
+	    // rely on CSS strings and classes.
+	    if (options.direction == 'horizontal') {
+	        dimension = 'width'
+	        clientDimension = 'clientWidth'
+	        clientAxis = 'clientX'
+	        position = 'left'
+	        gutterClass = 'gutter gutter-horizontal'
+	        paddingA = 'paddingLeft'
+	        paddingB = 'paddingRight'
+	        if (!options.cursor) options.cursor = 'ew-resize'
+	    } else if (options.direction == 'vertical') {
+	        dimension = 'height'
+	        clientDimension = 'clientHeight'
+	        clientAxis = 'clientY'
+	        position = 'top'
+	        gutterClass = 'gutter gutter-vertical'
+	        paddingA = 'paddingTop'
+	        paddingB = 'paddingBottom'
+	        if (!options.cursor) options.cursor = 'ns-resize'
+	    }
+
+	    // 3. Define the dragging helper functions, and a few helpers to go with them.
+	    // Each helper is bound to a pair object that contains it's metadata. This
+	    // also makes it easy to store references to listeners that that will be
+	    // added and removed.
+	    // 
+	    // Even though there are no other functions contained in them, aliasing
+	    // this to self saves 50 bytes or so since it's used so frequently.
+	    //
+	    // The pair object saves metadata like dragging state, position and
+	    // event listener references.
+	    //
+	    // startDragging calls `calculateSizes` to store the inital size in the pair object.
+	    // It also adds event listeners for mouse/touch events,
+	    // and prevents selection while dragging so avoid the selecting text.
+	    var startDragging = function (e) {
+	            // Alias frequently used variables to save space. 200 bytes.
+	            var self = this
+	              , a = self.a
+	              , b = self.b
+
+	            // Call the onDragStart callback.
+	            if (!self.dragging && options.onDragStart) {
+	                options.onDragStart()
+	            }
+
+	            // Don't actually drag the element. We emulate that in the drag function.
+	            e.preventDefault()
+
+	            // Set the dragging property of the pair object.
+	            self.dragging = true
+
+	            // Create two event listeners bound to the same pair object and store
+	            // them in the pair object.
+	            self.move = drag.bind(self)
+	            self.stop = stopDragging.bind(self)
+
+	            // All the binding. `window` gets the stop events in case we drag out of the elements.
+	            global[addEventListener]('mouseup', self.stop)
+	            global[addEventListener]('touchend', self.stop)
+	            global[addEventListener]('touchcancel', self.stop)
+
+	            self.parent[addEventListener]('mousemove', self.move)
+	            self.parent[addEventListener]('touchmove', self.move)
+
+	            // Disable selection. Disable!
+	            a[addEventListener]('selectstart', noop)
+	            a[addEventListener]('dragstart', noop)
+	            b[addEventListener]('selectstart', noop)
+	            b[addEventListener]('dragstart', noop)
+
+	            a.style.userSelect = 'none'
+	            a.style.webkitUserSelect = 'none'
+	            a.style.MozUserSelect = 'none'
+	            a.style.pointerEvents = 'none'
+
+	            b.style.userSelect = 'none'
+	            b.style.webkitUserSelect = 'none'
+	            b.style.MozUserSelect = 'none'
+	            b.style.pointerEvents = 'none'
+
+	            // Set the cursor, both on the gutter and the parent element.
+	            // Doing only a, b and gutter causes flickering.
+	            self.gutter.style.cursor = options.cursor
+	            self.parent.style.cursor = options.cursor
+
+	            // Cache the initial sizes of the pair.
+	            calculateSizes.call(self)
+	        }
+
+	      // stopDragging is very similar to startDragging in reverse.
+	      , stopDragging = function () {
+	            var self = this
+	              , a = self.a
+	              , b = self.b
+
+	            if (self.dragging && options.onDragEnd) {
+	                options.onDragEnd()
+	            }
+
+	            self.dragging = false
+
+	            // Remove the stored event listeners. This is why we store them.
+	            global[removeEventListener]('mouseup', self.stop)
+	            global[removeEventListener]('touchend', self.stop)
+	            global[removeEventListener]('touchcancel', self.stop)
+
+	            self.parent[removeEventListener]('mousemove', self.move)
+	            self.parent[removeEventListener]('touchmove', self.move)
+
+	            // Delete them once they are removed. I think this makes a difference
+	            // in memory usage with a lot of splits on one page. But I don't know for sure.
+	            delete self.stop
+	            delete self.move
+
+	            a[removeEventListener]('selectstart', noop)
+	            a[removeEventListener]('dragstart', noop)
+	            b[removeEventListener]('selectstart', noop)
+	            b[removeEventListener]('dragstart', noop)
+
+	            a.style.userSelect = ''
+	            a.style.webkitUserSelect = ''
+	            a.style.MozUserSelect = ''
+	            a.style.pointerEvents = ''
+
+	            b.style.userSelect = ''
+	            b.style.webkitUserSelect = ''
+	            b.style.MozUserSelect = ''
+	            b.style.pointerEvents = ''
+
+	            self.gutter.style.cursor = ''
+	            self.parent.style.cursor = ''
+	        }
+
+	      // drag, where all the magic happens. The logic is really quite simple:
+	      // 
+	      // 1. Ignore if the pair is not dragging.
+	      // 2. Get the offset of the event.
+	      // 3. Snap offset to min if within snappable range (within min + snapOffset).
+	      // 4. Actually adjust each element in the pair to offset.
+	      // 
+	      // ---------------------------------------------------------------------
+	      // |    | <- this.aMin               ||              this.bMin -> |    |
+	      // |    |  | <- this.snapOffset      ||     this.snapOffset -> |  |    |
+	      // |    |  |                         ||                        |  |    |
+	      // |    |  |                         ||                        |  |    |
+	      // ---------------------------------------------------------------------
+	      // | <- this.start                                        this.size -> |
+	      , drag = function (e) {
+	            var offset
+
+	            if (!this.dragging) return
+
+	            // Get the offset of the event from the first side of the
+	            // pair `this.start`. Supports touch events, but not multitouch, so only the first
+	            // finger `touches[0]` is counted.
+	            if ('touches' in e) {
+	                offset = e.touches[0][clientAxis] - this.start
+	            } else {
+	                offset = e[clientAxis] - this.start
+	            }
+
+	            // If within snapOffset of min or max, set offset to min or max.
+	            // snapOffset buffers aMin and bMin, so logic is opposite for both.
+	            // Include the appropriate gutter sizes to prevent overflows.
+	            if (offset <= this.aMin + options.snapOffset + this.aGutterSize) {
+	                offset = this.aMin + this.aGutterSize
+	            } else if (offset >= this.size - (this.bMin + options.snapOffset + this.bGutterSize)) {
+	                offset = this.size - (this.bMin + this.bGutterSize)
+	            }
+
+	            // Actually adjust the size.
+	            adjust.call(this, offset)
+
+	            // Call the drag callback continously. Don't do anything too intensive
+	            // in this callback.
+	            if (options.onDrag) {
+	                options.onDrag()
+	            }
+	        }
+
+	      // Cache some important sizes when drag starts, so we don't have to do that
+	      // continously:
+	      // 
+	      // `size`: The total size of the pair. First element + second element + first gutter + second gutter.
+	      // `percentage`: The percentage between 0-100 that the pair occupies in the parent.
+	      // `start`: The leading side of the first element.
+	      //
+	      // ------------------------------------------------ - - - - - - - - - - -
+	      // |      aGutterSize -> |||                      |                     |
+	      // |                     |||                      |                     |
+	      // |                     |||                      |                     |
+	      // |                     ||| <- bGutterSize       |                     |
+	      // ------------------------------------------------ - - - - - - - - - - -
+	      // | <- start                             size -> |       parentSize -> |
+	      , calculateSizes = function () {
+	            // Figure out the parent size minus padding.
+	            var computedStyle = global.getComputedStyle(this.parent)
+	              , parentSize = this.parent[clientDimension] - parseFloat(computedStyle[paddingA]) - parseFloat(computedStyle[paddingB])
+
+	            this.size = this.a[getBoundingClientRect]()[dimension] + this.b[getBoundingClientRect]()[dimension] + this.aGutterSize + this.bGutterSize
+	            this.percentage = Math.min(this.size / parentSize * 100, 100)
+	            this.start = this.a[getBoundingClientRect]()[position]
+	        }
+
+	      // Actually adjust the size of elements `a` and `b` to `offset` while dragging.
+	      // calc is used to allow calc(percentage + gutterpx) on the whole split instance,
+	      // which allows the viewport to be resized without additional logic.
+	      // Element a's size is the same as offset. b's size is total size - a size.
+	      // Both sizes are calculated from the initial parent percentage, then the gutter size is subtracted.
+	      , adjust = function (offset) {
+	            this.a.style[dimension] = calc + '(' + (offset / this.size * this.percentage) + '% - ' + this.aGutterSize + 'px)'
+	            this.b.style[dimension] = calc + '(' + (this.percentage - (offset / this.size * this.percentage)) + '% - ' + this.bGutterSize + 'px)'
+	        }
+
+	      // 4. Define a few more functions that "balance" the entire split instance.
+	      // Split.js tries it's best to cope with min sizes that don't add up.
+	      // At some point this should go away since it breaks out of the calc(% - px) model.
+	      // Maybe it's a user error if you pass uncomputable minSizes.
+	      , fitMin = function () {
+	            var self = this
+	              , a = self.a
+	              , b = self.b
+
+	            if (a[getBoundingClientRect]()[dimension] < self.aMin) {
+	                a.style[dimension] = (self.aMin - self.aGutterSize) + 'px'
+	                b.style[dimension] = (self.size - self.aMin - self.aGutterSize) + 'px'
+	            } else if (b[getBoundingClientRect]()[dimension] < self.bMin) {
+	                a.style[dimension] = (self.size - self.bMin - self.bGutterSize) + 'px'
+	                b.style[dimension] = (self.bMin - self.bGutterSize) + 'px'
+	            }
+	        }
+	      , fitMinReverse = function () {
+	            var self = this
+	              , a = self.a
+	              , b = self.b
+
+	            if (b[getBoundingClientRect]()[dimension] < self.bMin) {
+	                a.style[dimension] = (self.size - self.bMin - self.bGutterSize) + 'px'
+	                b.style[dimension] = (self.bMin - self.bGutterSize) + 'px'
+	            } else if (a[getBoundingClientRect]()[dimension] < self.aMin) {
+	                a.style[dimension] = (self.aMin - self.aGutterSize) + 'px'
+	                b.style[dimension] = (self.size - self.aMin - self.aGutterSize) + 'px'
+	            }
+	        }
+	      , balancePairs = function (pairs) {
+	            for (var i = 0; i < pairs.length; i++) {
+	                calculateSizes.call(pairs[i])
+	                fitMin.call(pairs[i])
+	            }
+
+	            for (i = pairs.length - 1; i >= 0; i--) {
+	                calculateSizes.call(pairs[i])
+	                fitMinReverse.call(pairs[i])
+	            }
+	        }
+	      , setElementSize = function (el, size, gutterSize) {
+	            // Split.js allows setting sizes via numbers (ideally), or if you must,
+	            // by string, like '300px'. This is less than ideal, because it breaks
+	            // the fluid layout that `calc(% - px)` provides. You're on your own if you do that,
+	            // make sure you calculate the gutter size by hand.
+	            if (typeof size !== 'string' && !(size instanceof String)) {
+	                if (!isIE8) {
+	                    size = calc + '(' + size + '% - ' + gutterSize + 'px)'
+	                } else {
+	                    size = options.sizes[i] + '%'
+	                }
+	            }
+
+	            el.style[dimension] = size
+	        }
+
+	      // No-op function to prevent default. Used to prevent selection.
+	      , noop = function () { return false }
+
+	      // All DOM elements in the split should have a common parent. We can grab
+	      // the first elements parent and hope users read the docs because the
+	      // behavior will be whacky otherwise.
+	      , parent = elementOrSelector(ids[0]).parentNode
+
+	    // Set default options.sizes to equal percentages of the parent element.
+	    if (!options.sizes) {
+	        var percent = 100 / ids.length
+
+	        options.sizes = []
+
+	        for (i = 0; i < ids.length; i++) {
+	            options.sizes.push(percent)
+	        }
+	    }
+
+	    // Standardize minSize to an array if it isn't already. This allows minSize
+	    // to be passed as a number.
+	    if (!Array.isArray(options.minSize)) {
+	        var minSizes = []
+
+	        for (i = 0; i < ids.length; i++) {
+	            minSizes.push(options.minSize)
+	        }
+
+	        options.minSize = minSizes
+	    }
+
+	    // 5. Loop through the elements while pairing them off. Every pair gets a
+	    // `pair` object, a gutter, and isFirst/isLast properties.
+	    //
+	    // Basic logic:
+	    //
+	    // - Starting with the second element `i > 0`, create `pair` objects with
+	    //   `a = ids[i - 1]` and `b = ids[i]`
+	    // - Set gutter sizes based on the _pair_ being first/last. The first and last
+	    //   pair have gutterSize / 2, since they only have one half gutter, and not two.
+	    // - Create gutter elements and add event listeners.
+	    // - Set the size of the elements, minus the gutter sizes.
+	    //
+	    // -----------------------------------------------------------------------
+	    // |     i=0     |         i=1         |        i=2       |      i=3     |
+	    // |             |       isFirst       |                  |     isLast   |
+	    // |           pair 0                pair 1             pair 2           |
+	    // |             |                     |                  |              |
+	    // -----------------------------------------------------------------------
+	    for (i = 0; i < ids.length; i++) {
+	        var el = elementOrSelector(ids[i])
+	          , isFirstPair = (i == 1)
+	          , isLastPair = (i == ids.length - 1)
+	          , size = options.sizes[i]
+	          , gutterSize = options.gutterSize
+	          , pair
+
+	        if (i > 0) {
+	            // Create the pair object with it's metadata.
+	            pair = {
+	                a: elementOrSelector(ids[i - 1]),
+	                b: el,
+	                aMin: options.minSize[i - 1],
+	                bMin: options.minSize[i],
+	                dragging: false,
+	                parent: parent,
+	                isFirst: isFirstPair,
+	                isLast: isLastPair,
+	                direction: options.direction
+	            }
+
+	            // For first and last pairs, first and last gutter width is half.
+	            pair.aGutterSize = options.gutterSize
+	            pair.bGutterSize = options.gutterSize
+
+	            if (isFirstPair) {
+	                pair.aGutterSize = options.gutterSize / 2
+	            }
+
+	            if (isLastPair) {
+	                pair.bGutterSize = options.gutterSize / 2
+	            }
+	        }
+
+	        // Determine the size of the current element. IE8 is supported by
+	        // staticly assigning sizes without draggable gutters. Assigns a string
+	        // to `size`.
+	        // 
+	        // IE9 and above
+	        if (!isIE8) {
+	            // Create gutter elements for each pair.
+	            if (i > 0) {
+	                var gutter = document.createElement('div')
+
+	                gutter.className = gutterClass
+	                gutter.style[dimension] = options.gutterSize + 'px'
+
+	                gutter[addEventListener]('mousedown', startDragging.bind(pair))
+	                gutter[addEventListener]('touchstart', startDragging.bind(pair))
+
+	                parent.insertBefore(gutter, el)
+
+	                pair.gutter = gutter
+	            }
+
+	            // Half-size gutters for first and last elements.
+	            if (i === 0 || i == ids.length - 1) {
+	                gutterSize = options.gutterSize / 2
+	            }
+	        }
+
+	        // Set the element size to our determined size.
+	        setElementSize(el, size, gutterSize)
+
+	        // After the first iteration, and we have a pair object, append it to the
+	        // list of pairs.
+	        if (i > 0) {
+	            pairs.push(pair)
+	        }
+	    }
+
+	    // Balance the pairs to try to accomodate min sizes.
+	    balancePairs(pairs)
+
+	    return {
+	        setSizes: function (sizes) {
+	            for (var i = 0; i < sizes.length; i++) {
+	                if (i > 0) {
+	                    var pair = pairs[i - 1]
+
+	                    setElementSize(pair.a, sizes[i - 1], pair.aGutterSize)
+	                    setElementSize(pair.b, sizes[i], pair.bGutterSize)
+	                }
+	            }
+	        },
+	        collapse: function (i) {
+	            var pair
+
+	            if (i === pairs.length) {
+	                pair = pairs[i - 1]
+
+	                calculateSizes.call(pair)
+	                adjust.call(pair, pair.size - pair.bGutterSize)
+	            } else {
+	                pair = pairs[i]
+
+	                calculateSizes.call(pair)
+	                adjust.call(pair, pair.aGutterSize)
+	            }
+	        },
+	        destroy: function () {
+	            for (var i = 0; i < pairs.length; i++) {
+	                pairs[i].parent.removeChild(pairs[i].gutter)
+	                pairs[i].a.style[dimension] = ''
+	                pairs[i].b.style[dimension] = ''
+	            }
+	        }
+	    }
+	}
+
+	// Play nicely with module systems, and the browser too if you include it raw.
+	if (true) {
+	    if (typeof module !== 'undefined' && module.exports) {
+	        exports = module.exports = Split
+	    }
+	    exports.Split = Split
+	} else {
+	    global.Split = Split
+	}
+
+	// Call our wrapper function with the current global. In this case, `window`.
+	}).call(window);
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function($) {function rcEdit(currEditor, defaults, id) {
 	  "use strict";
+
+	  //splitjs
+	__webpack_require__(16);
 
 	  //------------------------------------------------------------------------------
 	  // Globals
@@ -34514,11 +35084,11 @@
 	      + (hasPreview
 	        ? "editor editor--single editor--has-preview\">"
 	        : "editor editor--single\">")
-	      + "<div class=\"editor__header\"><div class=\"editor-logo\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\"><path d=\"M17.225 21.335l.955-5.108 5.03.94-.954 5.108-5.03-.94zm8.927 1.668l.953-5.108 5.03.94-.954 5.11-5.028-.942z\"/><path d=\"M37.016 24.857c-.57 2.3-1.59 4.142-3.057 5.522-1.468 1.38-3.284 2.363-5.45 2.95-2.168.586-4.25.694-6.25.326-2-.368-3.908-1.213-5.724-2.533-1.816-1.32-3.163-2.888-4.04-4.7-.878-1.812-1.178-3.896-.9-6.25l1.954.36c-.164 1.787.147 3.41.936 4.863.788 1.455 1.906 2.69 3.353 3.704 1.446 1.016 3.073 1.69 4.88 2.022s3.57.283 5.284-.148c1.713-.433 3.195-1.188 4.447-2.268 1.25-1.078 2.122-2.48 2.614-4.21l1.952.36z\"/><path d=\"M2.656 23.598l11.525 2.04-.273 1.548-11.525-2.04zM1.6 20.896l1.59 6.552\"/><path d=\"M1.853 20.835l1.59 6.552-.51.124-1.59-6.55z\"/><path d=\"M25.465 14.96l-.367 3.055\"/><path d=\"M25.074 14.912l.782.094-.37 3.056-.78-.094z\"/><path d=\"M2.62 9.675l46.378 9.187-.238 1.2-46.38-9.186zM10.93 33.784l22.38 4.326-.21 1.078-22.377-4.326zM19.115 34.06l-.11 1.972\"/><path d=\"M18.723 34.037l.787.043-.108 1.973-.787-.043z\"/><g><path d=\"M23.97 35.11l-.11 1.972\"/><path d=\"M23.578 35.087l.787.043-.108 1.973-.787-.043z\"/></g><g><path d=\"M34.89 36.34l-2.685 3.667\"/><path d=\"M34.678 36.18l.424.312-2.687 3.666-.423-.31z\"/></g></svg></div><div class=\"editor-actions\"></div></div><div class=\"editor__body\"><div class=\"windowGroup\" id=\"code-" + id + "\"><div class=\"window html\"><pre id=\""
+	      + "<div class=\"editor__header\"><div class=\"editor-logo\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\"><path d=\"M17.225 21.335l.955-5.108 5.03.94-.954 5.108-5.03-.94zm8.927 1.668l.953-5.108 5.03.94-.954 5.11-5.028-.942z\"/><path d=\"M37.016 24.857c-.57 2.3-1.59 4.142-3.057 5.522-1.468 1.38-3.284 2.363-5.45 2.95-2.168.586-4.25.694-6.25.326-2-.368-3.908-1.213-5.724-2.533-1.816-1.32-3.163-2.888-4.04-4.7-.878-1.812-1.178-3.896-.9-6.25l1.954.36c-.164 1.787.147 3.41.936 4.863.788 1.455 1.906 2.69 3.353 3.704 1.446 1.016 3.073 1.69 4.88 2.022s3.57.283 5.284-.148c1.713-.433 3.195-1.188 4.447-2.268 1.25-1.078 2.122-2.48 2.614-4.21l1.952.36z\"/><path d=\"M2.656 23.598l11.525 2.04-.273 1.548-11.525-2.04zM1.6 20.896l1.59 6.552\"/><path d=\"M1.853 20.835l1.59 6.552-.51.124-1.59-6.55z\"/><path d=\"M25.465 14.96l-.367 3.055\"/><path d=\"M25.074 14.912l.782.094-.37 3.056-.78-.094z\"/><path d=\"M2.62 9.675l46.378 9.187-.238 1.2-46.38-9.186zM10.93 33.784l22.38 4.326-.21 1.078-22.377-4.326zM19.115 34.06l-.11 1.972\"/><path d=\"M18.723 34.037l.787.043-.108 1.973-.787-.043z\"/><g><path d=\"M23.97 35.11l-.11 1.972\"/><path d=\"M23.578 35.087l.787.043-.108 1.973-.787-.043z\"/></g><g><path d=\"M34.89 36.34l-2.685 3.667\"/><path d=\"M34.678 36.18l.424.312-2.687 3.666-.423-.31z\"/></g></svg></div><div class=\"editor-actions\"></div></div><div class=\"editor__body\"><div class=\"windowGroup\" id=\"code-" + id + "\"><div class=\"window html\" id=\"html-" + id + "\"><pre id=\""
 	      + htmlId 
 	      + "\"></pre></div></div>"
 	      + (hasPreview
-	        ? "<span class=\"redistribute\" id=\"redist-" + id + "\"></span><div class=\"preview\" id=\"preview-" + id + "\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>"
+	        ? "<div class=\"preview\" id=\"preview-" + id + "\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>"
 	        : "</div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>");
 
 	    } else {
@@ -34530,16 +35100,16 @@
 	      + (hasPreview
 	        ? "editor editor--has-preview\">"
 	        : "editor\">")
-	      + "<div class=\"editor__header\"><div class=\"editor-logo\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\"><path d=\"M17.225 21.335l.955-5.108 5.03.94-.954 5.108-5.03-.94zm8.927 1.668l.953-5.108 5.03.94-.954 5.11-5.028-.942z\"/><path d=\"M37.016 24.857c-.57 2.3-1.59 4.142-3.057 5.522-1.468 1.38-3.284 2.363-5.45 2.95-2.168.586-4.25.694-6.25.326-2-.368-3.908-1.213-5.724-2.533-1.816-1.32-3.163-2.888-4.04-4.7-.878-1.812-1.178-3.896-.9-6.25l1.954.36c-.164 1.787.147 3.41.936 4.863.788 1.455 1.906 2.69 3.353 3.704 1.446 1.016 3.073 1.69 4.88 2.022s3.57.283 5.284-.148c1.713-.433 3.195-1.188 4.447-2.268 1.25-1.078 2.122-2.48 2.614-4.21l1.952.36z\"/><path d=\"M2.656 23.598l11.525 2.04-.273 1.548-11.525-2.04zM1.6 20.896l1.59 6.552\"/><path d=\"M1.853 20.835l1.59 6.552-.51.124-1.59-6.55z\"/><path d=\"M25.465 14.96l-.367 3.055\"/><path d=\"M25.074 14.912l.782.094-.37 3.056-.78-.094z\"/><path d=\"M2.62 9.675l46.378 9.187-.238 1.2-46.38-9.186zM10.93 33.784l22.38 4.326-.21 1.078-22.377-4.326zM19.115 34.06l-.11 1.972\"/><path d=\"M18.723 34.037l.787.043-.108 1.973-.787-.043z\"/><g><path d=\"M23.97 35.11l-.11 1.972\"/><path d=\"M23.578 35.087l.787.043-.108 1.973-.787-.043z\"/></g><g><path d=\"M34.89 36.34l-2.685 3.667\"/><path d=\"M34.678 36.18l.424.312-2.687 3.666-.423-.31z\"/></g></svg></div><div class=\"editor-actions\"></div></div><div class=\"editor__body\"><div class=\"windowGroup\" id=\"code-" + id + "\"><div class=\"window html\"><pre id=\""
+	      + "<div class=\"editor__header\"><div class=\"editor-logo\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\"><path d=\"M17.225 21.335l.955-5.108 5.03.94-.954 5.108-5.03-.94zm8.927 1.668l.953-5.108 5.03.94-.954 5.11-5.028-.942z\"/><path d=\"M37.016 24.857c-.57 2.3-1.59 4.142-3.057 5.522-1.468 1.38-3.284 2.363-5.45 2.95-2.168.586-4.25.694-6.25.326-2-.368-3.908-1.213-5.724-2.533-1.816-1.32-3.163-2.888-4.04-4.7-.878-1.812-1.178-3.896-.9-6.25l1.954.36c-.164 1.787.147 3.41.936 4.863.788 1.455 1.906 2.69 3.353 3.704 1.446 1.016 3.073 1.69 4.88 2.022s3.57.283 5.284-.148c1.713-.433 3.195-1.188 4.447-2.268 1.25-1.078 2.122-2.48 2.614-4.21l1.952.36z\"/><path d=\"M2.656 23.598l11.525 2.04-.273 1.548-11.525-2.04zM1.6 20.896l1.59 6.552\"/><path d=\"M1.853 20.835l1.59 6.552-.51.124-1.59-6.55z\"/><path d=\"M25.465 14.96l-.367 3.055\"/><path d=\"M25.074 14.912l.782.094-.37 3.056-.78-.094z\"/><path d=\"M2.62 9.675l46.378 9.187-.238 1.2-46.38-9.186zM10.93 33.784l22.38 4.326-.21 1.078-22.377-4.326zM19.115 34.06l-.11 1.972\"/><path d=\"M18.723 34.037l.787.043-.108 1.973-.787-.043z\"/><g><path d=\"M23.97 35.11l-.11 1.972\"/><path d=\"M23.578 35.087l.787.043-.108 1.973-.787-.043z\"/></g><g><path d=\"M34.89 36.34l-2.685 3.667\"/><path d=\"M34.678 36.18l.424.312-2.687 3.666-.423-.31z\"/></g></svg></div><div class=\"editor-actions\"></div></div><div class=\"editor__body\"><div class=\"windowGroup\" id=\"code-" + id + "\"><div class=\"window html\" id=\"html-" + id + "\"><pre id=\""
 	      + htmlId 
-	      + "\"></pre><div class=\"window-btns\"><button class=\"btn btn--window togglePane\" id=\"htmlToggle\" data-editor=\"html\" title=\"Toggle HTML\">HTML<span></span></button></div></div><div class=\"window css\"><pre id=\"" 
+	      + "\"></pre></div><div class=\"window css\" id=\"css-" + id + "\"><pre id=\"" 
 	      + cssId 
-	      + "\"></pre><div class=\"window-btns\"><button class=\"btn btn--window togglePane\" id=\"cssToggle\" data-editor=\"css\" title=\"Toggle CSS\">CSS<span></span></button></div></div><div class=\"window js\"><pre id=\"" 
+	      + "\"></pre></div><div class=\"window js\" id=\"js-" + id + "\"><pre id=\"" 
 	      + jsId 
-	      +"\"></pre><div class=\"window-btns\"><button class=\"btn btn--window\" id=\"run\" title=\"Run...\">Run</button><button class=\"btn btn--window togglePane\" id=\"jsToggle\" data-editor=\"js\" title=\"Toggle JS\">JavaScript<span></span></button></div></div></div>"
+	      +"\"></pre><div class=\"window-btns\"><button class=\"btn btn--window\" id=\"run\" title=\"Run...\">Run</button></div></div></div>"
 
 	      + (hasPreview
-	        ? "<span class=\"redistribute\" id=\"redist-" + id + "\"></span><div class=\"preview\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div></div>"
+	        ? "</span><div class=\"preview\" id=\"preview-" + id + "\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div></div>"
 	        : "</div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>");
 	    }
 
@@ -34680,64 +35250,51 @@
 
 	  //------------------------------------------------------------------------------
 	  // Redistribute Editor
-	  var redistr = document.getElementById('redist-' + id),
-	      redistCode = document.getElementById('code-' + id),
-	      redistPreview = document.getElementById('preview-' + id),
-	      startX, 
-	      startCode = $(resizr).find('.windowGroup').width(),
-	      startPreview = $(resizr).find('.preview').width();
 
-	  function initDist(redistEl) {
-	//    startX = e.clientX;
-	console.log('blah')
+
+	  if(hasPreview) {
+	    var codeDisplay = '#code-' + id,
+	        previewDisplay = '#preview-' + id;
 	    
-	     var startEditor = $(resizr).width();
-	     //redistr.onmousemove = function() { doRedist(startEditor) };
-	    document.documentElement.addEventListener('mousemove', doRedist(startEditor), false);
-	    document.documentElement.addEventListener('mouseup', stopRedist, false);
+	    // single editor + preview
+	    if(singlesplit === true) {
+	      var singleEditor = Split([codeDisplay, previewDisplay], {
+	            sizes: [50, 50],
+	            minSize: 100
+	          });
+
+	    // multieditor + preview
+	    } else {
+	      var htmlDisplay = '#html-' + id,
+	        cssDisplay = '#css-' + id,
+	        jsDisplay = '#js-' + id,
+	        multiEditor = Split([codeDisplay, previewDisplay], {
+	            sizes: [50, 50],
+	            minSize: 0
+	          }),
+
+	        multiCode = Split([htmlDisplay, cssDisplay, jsDisplay], {
+	          direction: 'vertical',
+	          sizes: [33, 33, 33],
+	          minSize: 0
+	        });
+	    }
+
+	  } else {
+	    // multieditor + no preview
+	    if(singlesplit !== true) {
+	      var htmlDisplay = '#html-' + id,
+	          cssDisplay = '#css-' + id,
+	          jsDisplay = '#js-' + id,
+	          editor = Split([htmlDisplay, cssDisplay, jsDisplay], {
+	            direction: 'vertical',
+	            sizes: [33, 33, 33],
+	            minSize: 0
+	          });
+	    }
 	  }
 
-	  // Trigger css width change on drag
-	  function doRedist(startWidth) {
-	    console.log('redisting');
-	    // $(e).mousemove(function( event ) {
-	    //   var msg = "Handler for .mousemove() called at ";
-	    //   msg += event.pageX + ", " + event.pageY;
-	    //   console.log( msg );
-	    // });
-	    //redistCode.style.width = (startCode + ((e.clientX - startX) * 2)) + 'px';
-	    var cursorX = (event.pageX) + 'px',
-	        redistCodeWidth = 'calc(' + cursorX + ' - (100vw - ' + startWidth + 'px) / 2)',
-	        redistRedistrWidth = 'calc((' + cursorX + ' - (100vw - ' + startWidth + 'px) / 2))';
-	        //console.log(redistCodeWidth);
-	        console.log(cursorX)
-	    $(redistCode).css('width', redistCodeWidth);
-	    $(redistr).css('left', redistRedistrWidth );
-	    
-	    addClass('resize-editor--redisting', resizr);
-	  }
-
-	  // Remove listeners and abort when dragging stops
-	  function stopRedist(e) {
-	    console.log('stop redist')
-	    $(document).off("mousemove");
-
-	    document.documentElement.removeEventListener('mousemove', doRedist, false);
-	    document.documentElement.removeEventListener('mouseup', stopRedist, false);
-	  }
-
-	  if (redistr != null) {
-	    redistr.onmousedown = function() { initDist(redistr) };
-	    redistr.onmouseup = function() { stopRedist() };
-	  }
-
-
-	//  mouse down > listen for drag
-	//               on drag > resize
-	//  mouse up   > stop all
-
-
-	//offset = posX - ((100vw - editorW) / 2)
+	  
 
 
 	  //------------------------------------------------------------------------------
@@ -34870,18 +35427,6 @@
 	  };
 
 	  rcEdit(self, defaults, id);
-
-	  var code = '#code-' + id,
-	      preview = '#preview-' + id;
-
-	  console.log(code);
-
-	  Split([code, preview], {
-	    sizes: [25, 75],
-	    minSize: 200
-	  });
-
-	  console.log(editor)
 	});
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))

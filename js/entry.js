@@ -7,13 +7,14 @@ require("../style/scss/main.scss");
 require("jquery");
 
 // Use npm brace for ace: https://github.com/thlorenz/brace
-require('brace');
-require('brace/mode/html');
-require('brace/mode/css');
-require('brace/mode/javascript');
-require('brace/theme/chrome');
+require("brace");
+require("brace/mode/html");
+require("brace/mode/css");
+require("brace/mode/javascript");
+require("brace/theme/chrome");
 
-//require('split.js');
+// Splitjs
+require("../js/split.js"); // TODO: Should be resolved as an npm module
 
 
 // Our editor config
