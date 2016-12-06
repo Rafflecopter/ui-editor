@@ -14,7 +14,7 @@ require("brace/mode/javascript");
 require("brace/theme/chrome");
 
 // Splitjs
-require("../js/split.js"); // TODO: Should be resolved as an npm module
+// require("../js/split.js"); // TODO: Should be resolved as an npm module
 
 
 // Our editor config
