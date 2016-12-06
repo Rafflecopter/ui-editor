@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="awsm-content">
-    <h3>Single Editor</h3>
+<!--     <h3>Single Editor</h3>
     <div class="editor">
       <script type="text/html" id="default"><style>span{color:red;}</style>
 <span>elloz</span></script>
@@ -17,37 +17,55 @@
     <div class="editor" data-preview="yes">
       <textarea name="default" id="default"><style>span{color:red;}</style>
 <span>imma textarea</span></textarea>
-    </div>
+    </div> -->
 
-    <h3>Single Editor with Preview (from parent)</h3>
+<!--     <h3>Single Editor with Preview (from parent)</h3>
     <div class="editor-wrap has-preview">
       <div class="editor">
         <script type="text/html" id="default"><style>span{color:green;}</style>
   <span>.has-preview on parent still lets me preview</span></script>
       </div>
-    </div>
+    </div> -->
 
-    <h3>Split Editor</h3>
+<!--     <h3>Split Editor</h3>
     <div class="editor">
       <script type="text/html" id="default"><span>goodbye</span></script>
       <script type="text/html" id="default-css">span{color:blue}</script>  
       <script type="text/javascript" id="default-js">console.log('👋');</script>
-    </div>
+    </div> -->
 
-    <h3>Split Editor (with Preview)</h3>
+     <h3>Split Editor (with Preview)</h3>
     <div class="editor" data-preview="true">
       <script type="text/html" id="default"><span>goodbye</span></script>
       <script type="text/html" id="default-css">span{color:blue}</script>  
       <script type="text/javascript" id="default-js">console.log('👋');</script>
     </div>
   </div>
-
-  <div>
-    <div id="one">content one</div>
-    <div id="two">content two</div>
+<!--
+    <div class="outer">
+  <div id="code" class="split-horizontal">
+    <div id="html" class="split">HTML</div>
+    <div id="css" class="split">CSS</div>
+    <div id="js" class="split">JS</div>
   </div>
+  <div id="preview" class="split-horizontal">Preview</div>
+</div> -->
 
   <script type="text/javascript" src="js/split.js" charset="utf-8"></script>
+
+<!-- <script type="text/javascript">
+var editor = Split(['#code', '#preview'], {
+    sizes: [33.3, 66.7],
+    minSize: 100
+});
+//editor.setSizes([50, 50]);
+//editor.collapse(0);
+
+Split(['#html', '#css', '#js'], {
+    direction: 'vertical',
+    sizes: [33, 33, 33],
+    minSize: 20
+}); </script> -->
   <script type="text/javascript" src="js/bundle.js" charset="utf-8"></script>
 </body>
 </html>

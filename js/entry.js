@@ -13,7 +13,7 @@ require('brace/mode/css');
 require('brace/mode/javascript');
 require('brace/theme/chrome');
 
-//require('../js/split.min.js');
+//require('split.js');
 
 
 // Our editor config
