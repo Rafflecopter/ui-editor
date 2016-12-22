@@ -9,6 +9,7 @@ $editor-default: 600px;
   position: relative;
   width: $editor-default; 
   height: $editor-default * (2/3);
+  max-width: 100%;
   margin: 0 auto;
 
   &.resize--resizing {
