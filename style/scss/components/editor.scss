@@ -34,6 +34,10 @@ $editor-default: 600px;
   cursor: -webkit-grab;
   -webkit-user-select: none;
 
+  @media all and (max-width: 767px) {
+    display: none;
+  }
+
   &:before,
   &:after {
     content: '';
