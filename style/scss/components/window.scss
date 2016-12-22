@@ -31,6 +31,10 @@
     border-bottom-left-radius: 3px;
   }
 
+  &:only-child {
+    height: calc(100% - 10px);
+  }
+
   &.window--closed {
     height: $window-btn-height + (2 * $window-btn-offset);
     flex-basis: $window-btn-height + (2 * $window-btn-offset);

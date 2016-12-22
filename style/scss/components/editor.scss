@@ -80,6 +80,7 @@ $editor-default: 600px;
     @include flex(row);
     flex-grow: 1;
     flex-basis: 100%;
+    height: calc(100% - 10px);
   }
 
   &.editor--has-preview {
