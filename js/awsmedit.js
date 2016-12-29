@@ -127,7 +127,7 @@ function rcEdit(currEditor, defaults, id) {
 
     // Set field values from defaults set in the html
     (function defaultsGet() {
-      htmlField.setValue(defaults.html);
+      htmlField.setValue(defaults.html, 1);
 
       if (singlesplit === false) {
         cssField.setValue(defaults.css);
@@ -250,7 +250,6 @@ function rcEdit(currEditor, defaults, id) {
     }
   }
 
-  
 
 
   //------------------------------------------------------------------------------
@@ -288,6 +287,9 @@ function rcEdit(currEditor, defaults, id) {
       outputHtml += '</body>\n';
       outputHtml += '</html>';
     }
+
+    clearSelection();
+    console.log('hat')
 
     return outputHtml;
   }
@@ -358,6 +360,17 @@ function removeClass(name, element) {
   element.classList.remove(name);
 }
 
+function clearSelection() {
+  if ( document.selection ) {
+    console.log('coat')
+    console.log(document.selection)
+    document.selection.empty();
+  } else if ( window.getSelection ) {
+    console.log(window.getSelection)
+    window.getSelection().removeAllRanges();
+  }
+}
+
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -384,3 +397,7 @@ $(".editor").each(function() {
 
   rcEdit(self, defaults, id);
 });
+
+$(".editor").on("", ".ace_content", function(){
+  clearSelection
+})
