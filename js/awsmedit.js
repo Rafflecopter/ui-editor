@@ -288,9 +288,6 @@ function rcEdit(currEditor, defaults, id) {
       outputHtml += '</html>';
     }
 
-    clearSelection();
-    console.log('hat')
-
     return outputHtml;
   }
 
@@ -360,17 +357,6 @@ function removeClass(name, element) {
   element.classList.remove(name);
 }
 
-function clearSelection() {
-  if ( document.selection ) {
-    console.log('coat')
-    console.log(document.selection)
-    document.selection.empty();
-  } else if ( window.getSelection ) {
-    console.log(window.getSelection)
-    window.getSelection().removeAllRanges();
-  }
-}
-
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -397,7 +383,3 @@ $(".editor").each(function() {
 
   rcEdit(self, defaults, id);
 });
-
-$(".editor").on("", ".ace_content", function(){
-  clearSelection
-})
