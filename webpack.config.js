@@ -1,7 +1,8 @@
-var path = require("path");
-var webpack = require("webpack");
+var path = require("path"),
+    webpack = require("webpack"),
+    cloneDeep = require('lodash.clonedeep');
 
-module.exports = {
+var defaults = {
   entry: "./js/entry.js",
   output: {
     path: path.join(__dirname, "js"),
@@ -21,7 +22,15 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       $: "jquery",
-      jQuery: "jquery"
+      jQuery: "jquery",
+      'window.jQuery': 'jquery'
     })
   ]
 };
+
+var minimized = cloneDeep(defaults);
+
+minimized.plugins.push(new webpack.optimize.UglifyJsPlugin());
+minimized.output.filename = 'bundle.min.js';
+
+module.exports = [defaults, minimized];
