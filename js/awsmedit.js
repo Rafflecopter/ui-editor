@@ -127,7 +127,7 @@ function rcEdit(currEditor, defaults, id) {
 
     // Set field values from defaults set in the html
     (function defaultsGet() {
-      htmlField.setValue(defaults.html);
+      htmlField.setValue(defaults.html, 1);
 
       if (singlesplit === false) {
         cssField.setValue(defaults.css);
@@ -250,7 +250,6 @@ function rcEdit(currEditor, defaults, id) {
     }
   }
 
-  
 
 
   //------------------------------------------------------------------------------
