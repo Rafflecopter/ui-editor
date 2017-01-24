@@ -1,26 +1,52 @@
-function rcEdit(currEditor, defaults, id) {
+var WINDOW_WIDTH = window.outerWidth,
+    RESIZEABLE_AREA = window.innerWidth;
+
+
+function raflEdit(currEditor, defaults, id) {
   "use strict";
 
   //------------------------------------------------------------------------------
-  // Globals
-  var singlesplit = false,
+  // Editor Vars
+  var singlesplit  = false,
       newContent,
-      hasPreview = currEditor.attr('data-preview'),
-      htmlId = 'html_' + id,
-      cssId = 'css_' + id,
-      jsId = 'js_' + id,
-      iframeId = 'iframe_' + id,
+      targetWidth  = null,
+      targetHeight = null,
+      hasPreview   = currEditor.attr('data-preview'),
+      htmlId       = 'html_' + id,
+      cssId        = 'css_' + id,
+      jsId         = 'js_' + id,
+      iframeId     = 'iframe_' + id,
       editorWrapId = 'editWrap_' + id;
 
   // ---
-  // End Globals
+  // / Editor Vars
 
   //------------------------------------------------------------------------------
-  // Let parent apply preview (page-builder) in addition to data attribute
-  
-  if (currEditor.parent().hasClass("has-preview")){
-    hasPreview = true;
-  }
+  // Let parent apply preview and sizing (for page-builder) in addition to data attribute
+
+  var parentClass = currEditor.parent().attr('class').split(/\s+/);
+  $.each(parentClass, function(index, item) {
+    // check for preview
+    if (item === 'has-preview') {
+      hasPreview = true;
+    }
+
+    // check for width
+    if (item.match("^w-")) {
+      targetWidth = item.split("w-").pop();
+      // if target > max, target = max.
+      // if target not null, render
+      
+    }
+
+    if (item.match("^h-")) {
+      targetHeight = item.split("h-").pop();
+    }
+
+    console.log('tw: ' + targetWidth)
+    console.log('th: ' + targetHeight)
+  });
+
 
   //------------------------------------------------------------------------------
   // Generate ACE Editor DOM
@@ -36,7 +62,7 @@ function rcEdit(currEditor, defaults, id) {
       // Use single split-pane content & show preview if data-preview is found
       newContent="<div class=\"resize-editor\" id=\""
       + editorWrapId 
-      + "\"><div class=\""
+      + "\" style=\"width:" + targetWidth + "px; height\"><div class=\""
       + (hasPreview
         ? "editor editor--single editor--has-preview\">"
         : "editor editor--single\">")
@@ -44,7 +70,7 @@ function rcEdit(currEditor, defaults, id) {
       + htmlId 
       + "\"></pre></div></div>"
       + (hasPreview
-        ? "<div class=\"preview\" id=\"preview-" + id + "\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>"
+        ? "<div class=\"preview\" id=\"preview-" + id + "\"><iframe id=\"" + iframeId + "\" name=\"raflEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>"
         : "</div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>");
 
     } else {
@@ -65,7 +91,7 @@ function rcEdit(currEditor, defaults, id) {
       +"\"></pre><div class=\"window-btns\"><button class=\"btn btn--window\" id=\"run\" title=\"Run...\">Run</button></div></div></div>"
 
       + (hasPreview
-        ? "</span><div class=\"preview\" id=\"preview-" + id + "\"><iframe id=\"" + iframeId + "\" name=\"rcEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div></div>"
+        ? "</span><div class=\"preview\" id=\"preview-" + id + "\"><iframe id=\"" + iframeId + "\" name=\"raflEdit\" sandbox=\"allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms\" allowtransparency=\"true\"></iframe></div></div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div></div>"
         : "</div></div><div class=\"resizer\" id=\"resizer-" + id + "\"></div></div>");
     }
 
@@ -358,6 +384,11 @@ function removeClass(name, element) {
 }
 
 
+$(window).resize(function() {
+  RESIZEABLE_AREA = window.innerWidth;
+});
+
+
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 // Build Editors:
@@ -381,5 +412,5 @@ $(".editor").each(function() {
     js: $(self).find("#default-js").html()
   };
 
-  rcEdit(self, defaults, id);
+  raflEdit(self, defaults, id);
 });
