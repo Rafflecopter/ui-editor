@@ -1,22 +1,21 @@
-var WINDOW_WIDTH = window.outerWidth,
-    RESIZEABLE_AREA = window.innerWidth;
-
+var RESIZEABLE_WIDTH = $(window).width();
 
 function raflEdit(currEditor, defaults, id) {
   "use strict";
 
   //------------------------------------------------------------------------------
   // Editor Vars
-  var singlesplit  = false,
+  var singlesplit     = false,
       newContent,
-      targetWidth  = null,
-      targetHeight = null,
-      hasPreview   = currEditor.attr('data-preview'),
-      htmlId       = 'html_' + id,
-      cssId        = 'css_' + id,
-      jsId         = 'js_' + id,
-      iframeId     = 'iframe_' + id,
-      editorWrapId = 'editWrap_' + id;
+      targetSizeStyle,
+      targetWidth     = null,
+      targetHeight    = null,
+      hasPreview      = currEditor.attr('data-preview'),
+      htmlId          = 'html_' + id,
+      cssId           = 'css_' + id,
+      jsId            = 'js_' + id,
+      iframeId        = 'iframe_' + id,
+      editorWrapId    = 'editWrap_' + id;
 
   // ---
   // / Editor Vars
@@ -34,18 +33,34 @@ function raflEdit(currEditor, defaults, id) {
     // check for width
     if (item.match("^w-")) {
       targetWidth = item.split("w-").pop();
-      // if target > max, target = max.
-      // if target not null, render
-      
+
+      if (targetWidth > RESIZEABLE_WIDTH) {
+        targetWidth = "100%";
+      } else {
+        targetWidth = targetWidth + "px";
+      }
+
+      console.log(RESIZEABLE_WIDTH)
+      console.log(targetWidth)
     }
 
     if (item.match("^h-")) {
       targetHeight = item.split("h-").pop();
     }
 
-    console.log('tw: ' + targetWidth)
-    console.log('th: ' + targetHeight)
   });
+
+  if (targetWidth != null) {
+    if (targetHeight != null) { // both sizes
+      targetSizeStyle = 'style="width: ' + targetWidth + '; height: ' + targetHeight + 'px;"';
+    } else { // width only
+      targetSizeStyle = 'style="width: ' + targetWidth + ';';
+    }   
+  } else {
+    if (targetHeight != null) { // height only
+      targetSizeStyle = 'style="height: ' + targetHeight + 'px;';
+    }
+  }
 
 
   //------------------------------------------------------------------------------
@@ -61,8 +76,10 @@ function raflEdit(currEditor, defaults, id) {
 
       // Use single split-pane content & show preview if data-preview is found
       newContent="<div class=\"resize-editor\" id=\""
-      + editorWrapId 
-      + "\" style=\"width:" + targetWidth + "px; height\"><div class=\""
+      + editorWrapId + "\" "
+      + ((targetSizeStyle != "") 
+        ? targetSizeStyle : "")
+      + "><div class=\""
       + (hasPreview
         ? "editor editor--single editor--has-preview\">"
         : "editor editor--single\">")
@@ -385,7 +402,8 @@ function removeClass(name, element) {
 
 
 $(window).resize(function() {
-  RESIZEABLE_AREA = window.innerWidth;
+  RESIZEABLE_WIDTH = $(window).width();
+  console.log(RESIZEABLE_WIDTH)
 });
 
 
@@ -411,6 +429,8 @@ $(".editor").each(function() {
     css: $(self).find("#default-css").html(),
     js: $(self).find("#default-js").html()
   };
+
+  console.log(RESIZEABLE_WIDTH)
 
   raflEdit(self, defaults, id);
 });

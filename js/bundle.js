@@ -34473,14 +34473,15 @@
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($) {var WINDOW_WIDTH;
+	/* WEBPACK VAR INJECTION */(function($) {var WINDOW_WIDTH = window.outerWidth,
+	    RESIZEABLE_AREA = window.innerWidth;
 
 
 	function raflEdit(currEditor, defaults, id) {
 	  "use strict";
 
 	  //------------------------------------------------------------------------------
-	  // Globals
+	  // Editor Vars
 	  var singlesplit  = false,
 	      newContent,
 	      targetWidth  = null,
@@ -34493,7 +34494,7 @@
 	      editorWrapId = 'editWrap_' + id;
 
 	  // ---
-	  // End Globals
+	  // / Editor Vars
 
 	  //------------------------------------------------------------------------------
 	  // Let parent apply preview and sizing (for page-builder) in addition to data attribute
@@ -34508,15 +34509,20 @@
 	    // check for width
 	    if (item.match("^w-")) {
 	      targetWidth = item.split("w-").pop();
-	      var hat = $('body').width()
-	      //console.log(hat)
+	      // if target > max, target = max.
+	      // if target not null, render
+	      
 	    }
 
 	    if (item.match("^h-")) {
 	      targetHeight = item.split("h-").pop();
 	    }
 
-	    console.log('tw: ' + targetWidth)
+	    (targetWidth != null 
+	      ? console.log('tw: ' + targetWidth) 
+	      : "Nope")
+
+	    
 	    console.log('th: ' + targetHeight)
 	  });
 
@@ -34855,6 +34861,11 @@
 	function removeClass(name, element) {
 	  element.classList.remove(name);
 	}
+
+
+	$(window).resize(function() {
+	  RESIZEABLE_AREA = window.innerWidth;
+	});
 
 
 	//------------------------------------------------------------------------------
